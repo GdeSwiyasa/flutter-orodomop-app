@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 //COLOR
 const Color kPrimaryColor = Color(0xffCD3599);
 const Color blackColor = Color(0xff121212);
+const Color whiteColor = Colors.white;
 
 //TextStyle
 final TextStyle kHeading5 =
