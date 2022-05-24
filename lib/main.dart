@@ -4,6 +4,9 @@ import 'package:orodomop_app/presentation/presentation/note_pages.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  void initState() {}
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
