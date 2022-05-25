@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/presentation/widgets/app_bar.dart';
 
 class NoteScreen extends StatelessWidget {
   static const route = '/note_screen';
@@ -9,12 +9,15 @@ class NoteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('NOTE'),
-        backgroundColor: whiteColor,
-        foregroundColor: blackColor,
-        elevation: 0,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: kPrimaryColor,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      appBar: buildAppBar(
+        title: 'Note',
+        appBar: AppBar(),
       ),
       body: Container(
         child: ListView.separated(

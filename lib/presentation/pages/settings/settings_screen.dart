@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
-import 'package:orodomop_app/presentation/pages/settings/widget/settings_card_item.dart';
+import 'package:orodomop_app/presentation/widgets/app_bar.dart';
+import 'package:orodomop_app/presentation/widgets/settings_card_item.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const route = '/settings_screen';
@@ -9,17 +10,9 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // toolbarHeight: 80,
-        title: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            "Settings",
-            style: kHeading5.copyWith(color: blackColor),
-          ),
-        ),
-        backgroundColor: whiteColor,
-        elevation: 0,
+      appBar: buildAppBar(
+        appBar: AppBar(),
+        title: 'Settings',
       ),
       body: SingleChildScrollView(
         child: Padding(
