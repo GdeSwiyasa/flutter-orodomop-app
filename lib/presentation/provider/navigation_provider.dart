@@ -4,6 +4,7 @@ import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
 import 'package:orodomop_app/presentation/pages/news/news_screen.dart';
 import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
+import 'package:orodomop_app/presentation/pages/note/edit_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
 import 'package:orodomop_app/presentation/pages/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
@@ -69,6 +70,8 @@ class NavigationProvider extends ChangeNotifier {
         switch (settings.name) {
           case AddNotePage.route:
             return MaterialPageRoute(builder: (_) => AddNotePage());
+          case EditNotePage.route:
+            return MaterialPageRoute(builder: (_) => EditNotePage());
           default:
             return MaterialPageRoute(builder: (_) => NoteScreen());
         }

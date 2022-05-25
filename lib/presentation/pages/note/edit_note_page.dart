@@ -2,25 +2,35 @@ import 'package:flutter/material.dart';
 
 import '../../../common/constant.dart';
 
-class AddNotePage extends StatelessWidget {
-  static const route = '/add_note_screen';
+class EditNotePage extends StatelessWidget {
+  static const route = '/edit_note_screen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actionsIconTheme: IconThemeData(
+          size: 20,
+        ),
         actions: [
+          IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(Icons.edit_outlined),
+          ),
+          IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(Icons.delete_outline_rounded),
+          ),
           IconButton(
             onPressed: () => Navigator.pop(context),
             icon: Icon(Icons.done),
           )
         ],
-        centerTitle: true,
         elevation: 0,
         title: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
-            'Create Note',
+            'Your Note',
             style: kHeading5.copyWith(color: blackColor),
           ),
         ),

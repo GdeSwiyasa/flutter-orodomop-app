@@ -21,10 +21,11 @@ class buildAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       backgroundColor: whiteColor,
+      iconTheme: IconThemeData(color: blackColor),
     );
   }
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => new Size.fromHeight(appBar.preferredSize.height);
+  Size get preferredSize => Size.fromHeight(appBar.preferredSize.height);
 }
