@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/pages/news/news_screen.dart';
 import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
@@ -49,6 +50,7 @@ class _MainViewState extends State<MainView> {
               items: bottomNavigationBarItems,
               currentIndex: provider.currentTabIndex,
               onTap: provider.setTab,
+              selectedItemColor: kPrimaryColor,
             ),
           ),
         );

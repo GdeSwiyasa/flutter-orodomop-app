@@ -23,46 +23,12 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: CustomSettingsCard(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'General',
-                    style: kTitle.copyWith(
-                        color: blackColor, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  _textBuildButton(
-                    'Language',
-                    'adjust the language according to your needs',
-                  ),
-                  Container(
-                    color: blackColor.withOpacity(0.1),
-                    height: 1.0,
-                  ),
-                  _textBuildButton(
-                      'Theme', 'adjust the theme according to your needs'),
-                  Container(
-                    color: blackColor.withOpacity(0.1),
-                    height: 1.0,
-                  ),
-                  _textBuildButton('Notifications',
-                      'adjust the notifications according to your needs'),
-                  Container(
-                    color: Colors.grey.withOpacity(0.1),
-                    height: 1.0,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: Column(
+              children: [
+                _generalSettingsItem(),
+              ],
+            )),
       ),
     );
   }
@@ -89,6 +55,47 @@ class SettingsScreen extends StatelessWidget {
           ),
           Container(),
         ],
+      ),
+    );
+  }
+
+  Widget _generalSettingsItem() {
+    return CustomSettingsCard(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'General',
+              style: kTitle.copyWith(
+                  color: blackColor, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            _textBuildButton(
+              'Language',
+              'adjust the language according to your needs',
+            ),
+            Container(
+              color: blackColor.withOpacity(0.1),
+              height: 1.0,
+            ),
+            _textBuildButton(
+                'Theme', 'adjust the theme according to your needs'),
+            Container(
+              color: blackColor.withOpacity(0.1),
+              height: 1.0,
+            ),
+            _textBuildButton('Notifications',
+                'adjust the notifications according to your needs'),
+            Container(
+              color: Colors.grey.withOpacity(0.1),
+              height: 1.0,
+            ),
+          ],
+        ),
       ),
     );
   }
