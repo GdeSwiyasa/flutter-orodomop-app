@@ -10,6 +10,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // toolbarHeight: 80,
         title: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
@@ -22,12 +23,21 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: CustomSettingsCard(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 14),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    'General',
+                    style: kTitle.copyWith(
+                        color: blackColor, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   _textBuildButton(
                     'Language',
                     'adjust the language according to your needs',

@@ -14,7 +14,7 @@ class CustomSettingsCard extends StatelessWidget {
     return Container(
         padding: EdgeInsets.symmetric(
           horizontal: 20,
-          vertical: 25,
+          vertical: 20,
         ),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
