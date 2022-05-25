@@ -23,14 +23,6 @@ class NavigationProvider extends ChangeNotifier {
 
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case HomeScreen.route:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
-      case NewsScreen.route:
-        return MaterialPageRoute(builder: (_) => NewsScreen());
-      case NoteScreen.route:
-        return MaterialPageRoute(builder: (_) => NoteScreen());
-      case SettingsScreen.route:
-        return MaterialPageRoute(builder: (_) => SettingsScreen());
       case AddNotePage.route:
         return MaterialPageRoute(builder: (_) => AddNotePage());
       default:
@@ -75,6 +67,8 @@ class NavigationProvider extends ChangeNotifier {
       navigatorState: GlobalKey<NavigatorState>(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
+          case AddNotePage.route:
+            return MaterialPageRoute(builder: (_) => AddNotePage());
           default:
             return MaterialPageRoute(builder: (_) => NoteScreen());
         }

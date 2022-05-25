@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
+import 'package:orodomop_app/presentation/pages/settings/settings_screen.dart';
 import 'package:orodomop_app/presentation/widgets/app_bar.dart';
 
 class NoteScreen extends StatelessWidget {
@@ -10,7 +12,10 @@ class NoteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true)
+              .pushNamed(AddNotePage.route);
+        },
         child: Icon(Icons.add),
         backgroundColor: kPrimaryColor,
       ),
