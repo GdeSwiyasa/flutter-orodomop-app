@@ -8,10 +8,10 @@ const Color whiteColor = Colors.white;
 
 //TextStyle
 final TextStyle kHeading5 =
-    GoogleFonts.poppins(fontSize: 23, fontWeight: FontWeight.w400);
-final TextStyle kHeading6 = GoogleFonts.poppins(
-    fontSize: 19, fontWeight: FontWeight.w500, letterSpacing: 0.15);
-final TextStyle kSubtitle = GoogleFonts.poppins(
-    fontSize: 15, fontWeight: FontWeight.w400, letterSpacing: 0.15);
-final TextStyle kBodyText = GoogleFonts.poppins(
-    fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.25);
+    GoogleFonts.montserrat(fontSize: 24, fontWeight: FontWeight.w600);
+final TextStyle kHeading6 = GoogleFonts.montserrat(
+    fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.15);
+final TextStyle kSubtitle = GoogleFonts.montserrat(
+    fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.15);
+final TextStyle kBodyText = GoogleFonts.montserrat(
+    fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.25);
