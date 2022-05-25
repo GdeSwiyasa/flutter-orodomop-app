@@ -3,6 +3,7 @@ import 'package:orodomop_app/domain/entities/screen.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
 import 'package:orodomop_app/presentation/pages/news/news_screen.dart';
+import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
 import 'package:orodomop_app/presentation/pages/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,8 @@ class NavigationProvider extends ChangeNotifier {
         return MaterialPageRoute(builder: (_) => NoteScreen());
       case SettingsScreen.route:
         return MaterialPageRoute(builder: (_) => SettingsScreen());
+      case AddNotePage.route:
+        return MaterialPageRoute(builder: (_) => AddNotePage());
       default:
         return MaterialPageRoute(builder: (_) => MainView());
     }
