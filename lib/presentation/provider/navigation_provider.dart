@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/domain/entities/screen.dart';
-import 'package:orodomop_app/presentation/pages/home_screen.dart';
+import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
-import 'package:orodomop_app/presentation/pages/news_screen.dart';
-import 'package:orodomop_app/presentation/pages/note_screen.dart';
-import 'package:orodomop_app/presentation/pages/settings_screen.dart';
+import 'package:orodomop_app/presentation/pages/news/news_screen.dart';
+import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
+import 'package:orodomop_app/presentation/pages/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
 
 const homeScreen = 0;

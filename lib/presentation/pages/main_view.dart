@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:orodomop_app/presentation/pages/home_screen.dart';
-import 'package:orodomop_app/presentation/pages/news_screen.dart';
-import 'package:orodomop_app/presentation/pages/note_screen.dart';
-import 'package:orodomop_app/presentation/pages/settings_screen.dart';
+import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
+import 'package:orodomop_app/presentation/pages/news/news_screen.dart';
+import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
+import 'package:orodomop_app/presentation/pages/settings/settings_screen.dart';
 import 'package:orodomop_app/presentation/provider/navigation_provider.dart';
 import 'package:provider/provider.dart';
 
