@@ -10,7 +10,6 @@ class NoteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.white),
         centerTitle: true,
         title: const Text('NOTE'),
         backgroundColor: whiteColor,
