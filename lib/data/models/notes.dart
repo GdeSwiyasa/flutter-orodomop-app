@@ -1,5 +1,5 @@
 class NotesTable {
-  late String? id;
+  late int? id;
   late String title;
   late String contents;
 

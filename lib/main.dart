@@ -8,6 +8,7 @@ import 'package:orodomop_app/cubit/timer_pomodoro_cubit.dart';
 import 'package:orodomop_app/data/models/timer_pomodoro.dart';
 
 import 'package:orodomop_app/presentation/provider/navigation_provider.dart';
+import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<TimerPomodoroCubit>(
           create: (_) => TimerPomodoroCubit()..init(),
         ),
+        ChangeNotifierProvider(create: (_) => NotesDatabaseProvider())
       ],
       child: Builder(
         builder: (context) {

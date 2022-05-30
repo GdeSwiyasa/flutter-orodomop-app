@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/data/models/notes.dart';
 import 'package:orodomop_app/domain/entities/screen.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
@@ -71,7 +72,9 @@ class NavigationProvider extends ChangeNotifier {
           case AddNotePage.route:
             return MaterialPageRoute(builder: (_) => AddNotePage());
           case EditNotePage.route:
-            return MaterialPageRoute(builder: (_) => EditNotePage());
+            final notes = settings.arguments as NotesTable;
+            return MaterialPageRoute(
+                builder: (_) => EditNotePage(notes: notes), settings: settings);
           default:
             return MaterialPageRoute(builder: (_) => NoteScreen());
         }

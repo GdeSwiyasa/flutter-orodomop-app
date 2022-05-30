@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/data/models/notes.dart';
+import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/constant.dart';
 
-class AddNotePage extends StatelessWidget {
+class AddNotePage extends StatefulWidget {
   static const route = '/add_note_screen';
+
+  @override
+  State<AddNotePage> createState() => _AddNotePageState();
+}
+
+class _AddNotePageState extends State<AddNotePage> {
+  TextEditingController _titleControl = TextEditingController();
+  TextEditingController _contentControl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +22,16 @@ class AddNotePage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.done),
+            onPressed: () async {
+              final notes = NotesTable(
+                title: _titleControl.text,
+                contents: _contentControl.text,
+              );
+              Provider.of<NotesDatabaseProvider>(context, listen: false)
+                  .insertNote(notes);
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.done),
           )
         ],
         centerTitle: true,
@@ -36,6 +55,7 @@ class AddNotePage extends StatelessWidget {
               const Text('Subject'),
               const SizedBox(height: 32),
               TextField(
+                controller: _titleControl,
                 decoration: InputDecoration(
                   hintText: 'Add subject',
                   hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
@@ -53,6 +73,7 @@ class AddNotePage extends StatelessWidget {
               const Text('To-do'),
               const SizedBox(height: 32),
               TextField(
+                controller: _contentControl,
                 cursorColor: blackColor,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
