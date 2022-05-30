@@ -20,7 +20,6 @@ class _NoteScreenState extends State<NoteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        heroTag: null,
         onPressed: () {
           Navigator.of(context, rootNavigator: true)
               .pushNamed(AddNotePage.route);

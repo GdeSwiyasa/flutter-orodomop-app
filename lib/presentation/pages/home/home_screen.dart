@@ -169,6 +169,7 @@ class _TimerActionButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: FloatingActionButton(
+        heroTag: null,
         onPressed: () {
           cubit.start();
         },
@@ -188,6 +189,7 @@ class _TimerActionButton extends StatelessWidget {
         children: [
           Flexible(
             child: FloatingActionButton(
+              heroTag: null,
               onPressed: () => _openTimerStopModal(context),
               child: Icon(Icons.stop),
               backgroundColor: kPrimaryColor,
@@ -196,6 +198,7 @@ class _TimerActionButton extends StatelessWidget {
           const SizedBox(width: 16),
           Flexible(
             child: FloatingActionButton(
+              heroTag: null,
               onPressed: () => cubit.pause(),
               child: Icon(Icons.pause),
               backgroundColor: kPrimaryColor,
@@ -211,6 +214,7 @@ class _TimerActionButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: FloatingActionButton(
+        heroTag: null,
         onPressed: () => cubit.nextCycle(),
         child: Icon(Icons.skip_next_rounded),
         backgroundColor: kPrimaryColor,
@@ -224,6 +228,7 @@ class _TimerActionButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: FloatingActionButton(
+        heroTag: null,
         onPressed: () => cubit.resume(),
         child: Icon(Icons.navigate_next_rounded),
         backgroundColor: kPrimaryColor,
