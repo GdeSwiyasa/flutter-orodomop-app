@@ -36,14 +36,14 @@ class DatabaseHelper {
     ''');
   }
 
-  Future<int> insertNote(NotesTable notes) async {
+  Future<void> insertNote(NotesTable notes) async {
     final db = await database;
-    return await db!.insert(_tblNotes, notes.toMap());
+    await db!.insert(_tblNotes, notes.toMap());
   }
 
-  Future<int> deleteNote(int id) async {
+  Future<void> deleteNote(int id) async {
     final db = await database;
-    return await db!.delete(
+    await db!.delete(
       _tblNotes,
       where: 'id = ?',
       whereArgs: [id],

@@ -5,7 +5,7 @@ import 'package:orodomop_app/data/models/notes.dart';
 class NotesDatabaseProvider extends ChangeNotifier {
   late DatabaseHelper _databaseHelper;
 
-  List<NotesTable> _notes = [];
+  late List<NotesTable> _notes;
   List<NotesTable> get notes => _notes;
 
   NotesDatabaseProvider() {
@@ -30,6 +30,7 @@ class NotesDatabaseProvider extends ChangeNotifier {
 
   Future<void> deleteNote(int id) async {
     await _databaseHelper.deleteNote(id);
+    _getNotes();
   }
 
   Future<NotesTable> getNoteById(int id) async {

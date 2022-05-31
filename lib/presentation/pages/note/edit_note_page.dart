@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/data/models/notes.dart';
+import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:provider/provider.dart';
 

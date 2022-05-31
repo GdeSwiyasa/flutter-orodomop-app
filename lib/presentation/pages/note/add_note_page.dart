@@ -13,8 +13,8 @@ class AddNotePage extends StatefulWidget {
 }
 
 class _AddNotePageState extends State<AddNotePage> {
-  TextEditingController _titleControl = TextEditingController();
-  TextEditingController _contentControl = TextEditingController();
+  final TextEditingController _titleControl = TextEditingController();
+  final TextEditingController _contentControl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,34 +44,41 @@ class _AddNotePageState extends State<AddNotePage> {
           ),
         ),
         backgroundColor: whiteColor,
-        iconTheme: IconThemeData(color: blackColor),
+        iconTheme: const IconThemeData(color: blackColor),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const Text('Subject'),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
+              Text(
+                'Subject',
+                style: kHeading5,
+              ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _titleControl,
                 decoration: InputDecoration(
                   hintText: 'Add subject',
-                  hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                  hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: blackColor, width: 1),
+                    borderSide: const BorderSide(color: blackColor, width: 1),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: blackColor, width: 1),
+                    borderSide: const BorderSide(color: blackColor, width: 1),
                   ),
                 ),
               ),
-              const SizedBox(height: 32),
-              const Text('To-do'),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
+              Text(
+                'To-do',
+                style: kHeading5,
+              ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _contentControl,
                 cursorColor: blackColor,
@@ -79,14 +86,14 @@ class _AddNotePageState extends State<AddNotePage> {
                 maxLines: null,
                 decoration: InputDecoration(
                   hintText: 'Add what you supossed to do',
-                  hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                  hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: blackColor, width: 1),
+                    borderSide: const BorderSide(color: blackColor, width: 1),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: blackColor, width: 1),
+                    borderSide: const BorderSide(color: blackColor, width: 1),
                   ),
                 ),
               )

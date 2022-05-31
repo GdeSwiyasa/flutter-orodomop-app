@@ -6,28 +6,13 @@ import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:orodomop_app/presentation/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 
-class NoteScreen extends StatefulWidget {
+class NoteScreen extends StatelessWidget {
   static const route = '/note_screen';
 
   const NoteScreen({Key? key}) : super(key: key);
-
-  @override
-  State<NoteScreen> createState() => _NoteScreenState();
-}
-
-class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context, rootNavigator: true)
-              .pushNamed(AddNotePage.route);
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: kPrimaryColor,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: buildAppBar(
         title: 'Note',
         appBar: AppBar(),
@@ -52,6 +37,7 @@ class _NoteScreenState extends State<NoteScreen> {
                         Text(notes.title),
                         IconButton(
                           onPressed: () async {
+                            print(db.notes.length);
                             final selectedNote =
                                 await db.getNoteById(notes.id!);
                             Navigator.pushNamed(context, EditNotePage.route,
@@ -71,18 +57,24 @@ class _NoteScreenState extends State<NoteScreen> {
               separatorBuilder: (context, index) => const Divider(height: 16),
             );
           } else {
-            return const Center(
+            return Center(
               child: Text(
                 'You have not make a note yet',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: kSubtitle.copyWith(color: Colors.grey),
               ),
             );
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true)
+              .pushNamed(AddNotePage.route);
+        },
+        child: const Icon(Icons.add),
+        backgroundColor: kPrimaryColor,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
