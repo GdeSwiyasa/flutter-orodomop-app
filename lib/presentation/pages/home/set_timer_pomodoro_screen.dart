@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
-import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 
 class SetTimerPomodoroScreen extends StatelessWidget {
   static const route = '/set-timer-pomodoro';
@@ -225,7 +224,10 @@ class SetTimerPomodoroScreen extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
                                 child: const Text(
                                   'OK',
                                   style: TextStyle(color: kPrimaryColor),
