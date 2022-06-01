@@ -2,7 +2,6 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro.dart';
-import 'package:orodomop_app/presentation/widgets/app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   static const route = '/home_screen';
@@ -52,13 +51,14 @@ class PomodoroTimer extends StatefulWidget {
 }
 
 class _PomodoroTimerState extends State<PomodoroTimer> {
-  final int _duration = 70;
+  final int _duration = 120;
   final CountDownController _controller = CountDownController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Align(
+        alignment: Alignment.topCenter,
         child: CircularCountDownTimer(
           // Countdown duration in Seconds.
           duration: _duration,
@@ -70,10 +70,10 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
           controller: _controller,
 
           // Width of the Countdown Widget.
-          width: MediaQuery.of(context).size.width / 1.3,
+          width: MediaQuery.of(context).size.width / 1.5,
 
           // Height of the Countdown Widget.
-          height: MediaQuery.of(context).size.height / 1.3,
+          height: MediaQuery.of(context).size.height / 1.5,
 
           // Ring Color for Countdown Widget.
           ringColor: grayColor,
@@ -177,9 +177,10 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () =>
-                        // Navigator.pop(context, 'OK'),
-                        _controller.restart(duration: _duration),
+                    onPressed: () {
+                      Navigator.pop(context, 'OK');
+                      _controller.restart(duration: _duration);
+                    },
                     child: const Text(
                       'OK',
                       style: TextStyle(color: kPrimaryColor),
@@ -187,9 +188,8 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                   ),
                 ],
               ),
-            ),
-            // _controller.restart(duration: _duration),
-          )
+            ), // _controller.restart(duration: _duration),
+          ),
         ],
       ),
     );
@@ -197,15 +197,16 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
 
   Widget _button({required String title, VoidCallback? onPressed}) {
     return Expanded(
-        child: ElevatedButton(
-      child: Text(
-        title,
-        style: const TextStyle(color: Colors.white),
+      child: ElevatedButton(
+        child: Text(
+          title,
+          style: const TextStyle(color: Colors.white),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+        ),
+        onPressed: onPressed,
       ),
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(kPrimaryColor),
-      ),
-      onPressed: onPressed,
-    ));
+    );
   }
 }
