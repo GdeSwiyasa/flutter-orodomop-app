@@ -27,22 +27,17 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  circular_countdown_timer: ^0.2.1
   cupertino_icons: ^1.0.2
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
-  google_fonts: ^3.0.1
-  hive: ^2.2.1
-  provider: ^6.0.3
-  sqflite: ^2.0.2+1
-  hive_flutter: ^1.1.0
-  syncfusion_flutter_gauges: ^19.4.56
-  equatable: ^2.0.3
-
-dev_dependencies:
-  flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
+  google_fonts: ^3.0.1
+  provider: ^6.0.3
+  sqflite: ^2.0.2+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

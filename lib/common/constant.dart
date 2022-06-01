@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 const Color kPrimaryColor = Color(0xffCD3599);
 const Color blackColor = Color(0xff121212);
 const Color greenColor = Color(0xff098877);
+const Color grayColor = Color(0xffBFBFBF);
 const Color kNoteCard = Color(0xffF9F9F9);
 const Color whiteColor = Colors.white;
 

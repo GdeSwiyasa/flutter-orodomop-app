@@ -1,277 +1,211 @@
-import 'package:flutter/cupertino.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:orodomop_app/common/constant.dart';
-import 'package:orodomop_app/cubit/timer_pomodoro_cubit.dart';
-import 'package:orodomop_app/presentation/widgets/pop_up_modal.dart';
-import 'package:orodomop_app/presentation/widgets/timer_pomodoro_slider.dart';
+import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro.dart';
+import 'package:orodomop_app/presentation/widgets/app_bar.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const route = '/home_timer-pomodoro-screen';
+class HomeScreen extends StatelessWidget {
+  static const route = '/home_screen';
   const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    final timerPomodoroCubit = context.read<TimerPomodoroCubit>();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Screen"),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              Navigator.pushNamed(context, SetTimerPomodoro.route);
+            },
+            icon: const Icon(
+              Icons.timer_outlined,
+              color: kPrimaryColor,
+            ),
+          )
+        ],
         centerTitle: true,
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+            'Orodomop',
+            style: kHeading5.copyWith(color: blackColor),
+          ),
+        ),
+        backgroundColor: whiteColor,
+        iconTheme: const IconThemeData(color: blackColor),
       ),
+      body: PomodoroTimer(
+        title: "Home Screen",
+      ),
+    );
+  }
+}
+
+class PomodoroTimer extends StatefulWidget {
+  PomodoroTimer({Key? key, this.title}) : super(key: key);
+
+  final String? title;
+
+  @override
+  State<PomodoroTimer> createState() => _PomodoroTimerState();
+}
+
+class _PomodoroTimerState extends State<PomodoroTimer> {
+  final int _duration = 70;
+  final CountDownController _controller = CountDownController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: Center(
-        child: SafeArea(
-          child: TimerBody(),
+        child: CircularCountDownTimer(
+          // Countdown duration in Seconds.
+          duration: _duration,
+
+          // Countdown initial elapsed Duration in Seconds.
+          initialDuration: 0,
+
+          // Controls (i.e Start, Pause, Resume, Restart) the Countdown Timer.
+          controller: _controller,
+
+          // Width of the Countdown Widget.
+          width: MediaQuery.of(context).size.width / 1.3,
+
+          // Height of the Countdown Widget.
+          height: MediaQuery.of(context).size.height / 1.3,
+
+          // Ring Color for Countdown Widget.
+          ringColor: grayColor,
+
+          // Ring Gradient for Countdown Widget.
+          ringGradient: null,
+
+          // Filling Color for Countdown Widget.
+          fillColor: kPrimaryColor,
+
+          // Filling Gradient for Countdown Widget.
+          fillGradient: null,
+
+          // Background Color for Countdown Widget.
+          backgroundColor: whiteColor,
+
+          // Background Gradient for Countdown Widget.
+          backgroundGradient: null,
+
+          // Border Thickness of the Countdown Ring.
+          strokeWidth: 17.0,
+
+          // Begin and end contours with a flat edge and no extension.
+          strokeCap: StrokeCap.round,
+
+          // Text Style for Countdown Text.
+          textStyle: const TextStyle(
+            fontSize: 53.0,
+            color: blackColor,
+            fontWeight: FontWeight.bold,
+          ),
+
+          // Format for the Countdown Text.
+          textFormat: CountdownTextFormat.MM_SS,
+
+          // Handles Countdown Timer (true for Reverse Countdown (max to 0), false for Forward Countdown (0 to max)).
+          isReverse: true,
+
+          // Handles Animation Direction (true for Reverse Animation, false for Forward Animation).
+          isReverseAnimation: true,
+
+          // Handles visibility of the Countdown Text.
+          isTimerTextShown: true,
+
+          // Handles the timer start.
+          autoStart: false,
+
+          // This Callback will execute when the Countdown Starts.
+          onStart: () {
+            // Here, do whatever you want
+            debugPrint('Countdown Started');
+          },
+
+          // This Callback will execute when the Countdown Ends.
+          onComplete: () {
+            // Here, do whatever you want
+            debugPrint('Countdown Ended');
+          },
         ),
       ),
-    );
-  }
-}
-
-class TimerBody extends StatelessWidget {
-  const TimerBody({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        TimerPomodoro(),
-        _TimerActionButton(),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Align(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.timer_sharp),
-                iconSize: 30,
-                color: kPrimaryColor,
-              )
-              // TextButton(
-              //   onPressed: () {
-              //     //   Navigator.pushNamed(context, PomodoroTimerSettingsPage.ROUTE_NAME);
-              //   },
-              //   child: Text(
-              //     'Set Up Timmer',
-              //     style: TextStyle(color: kPrimaryColor),
-              //   ),
-              // ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            width: 30,
+          ),
+          _button(
+            title: "Start",
+            onPressed: () => _controller.start(),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          _button(
+            title: "Pause",
+            onPressed: () => _controller.pause(),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          _button(
+            title: "Resume",
+            onPressed: () => _controller.resume(),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          _button(
+            title: "Restart",
+            onPressed: () => showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                title: const Text('Restart Timer'),
+                content: const Text('Are you sure to restart the timer?'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, 'Cancel'),
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(color: grayColor),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () =>
+                        // Navigator.pop(context, 'OK'),
+                        _controller.restart(duration: _duration),
+                    child: const Text(
+                      'OK',
+                      style: TextStyle(color: kPrimaryColor),
+                    ),
+                  ),
+                ],
               ),
-        ),
-      ],
-    );
-  }
-}
-
-class TimerPomodoro extends StatelessWidget {
-  const TimerPomodoro({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        TimerSlider(),
-        CountTimer(),
-      ],
-    );
-  }
-}
-
-class TimerSlider extends StatelessWidget {
-  const TimerSlider({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final cubit = context.watch<TimerPomodoroCubit>();
-    final state = cubit.state;
-    final color;
-    if (state.mode.isWork) {
-      color = kPrimaryColor;
-    } else {
-      color = greenColor;
-    }
-    final value = state.currentDuration / state.duration;
-
-    return Center(
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: PomodoroTimerSlider(
-              color: color,
-              value: 1 - value,
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CountTimer extends StatelessWidget {
-  const CountTimer({Key? key}) : super(key: key);
-
-  String _numberFormat(int value) {
-    return value.toString().padLeft(2, '0');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final cubit = context.watch<TimerPomodoroCubit>();
-    final state = cubit.state;
-
-    final minutes = _numberFormat(state.currentDuration ~/ 60);
-    final seconds = _numberFormat(state.currentDuration % 60);
-
-    return Center(
-      child: DefaultTextStyle(
-        style: TextStyle(
-          fontSize: 90,
-          color: blackColor,
-        ),
-        child: Text(
-          '$minutes:$seconds',
-        ),
-      ),
-    );
-  }
-}
-
-class _TimerActionButton extends StatelessWidget {
-  const _TimerActionButton({Key? key}) : super(key: key);
-
-  void _openTimerStopModal(BuildContext context) async {
-    final cubit = context.read<TimerPomodoroCubit>();
-
-    cubit.pause();
-
-    await showPopupModal(
-      context: context,
-      title: 'Are you sure you want to stop timer budhi?',
-      onCancel: cubit.resume,
-      onConiform: cubit.stop,
-    );
-  }
-
-  Widget _buildStartButton(BuildContext context) {
-    final cubit = context.read<TimerPomodoroCubit>();
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: FloatingActionButton(
-        heroTag: null,
-        onPressed: () {
-          cubit.start();
-        },
-        child: Icon(Icons.play_arrow_rounded),
-        backgroundColor: kPrimaryColor,
-      ),
-    );
-  }
-
-  Widget _buildToggleButton(BuildContext context) {
-    final cubit = context.read<TimerPomodoroCubit>();
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Flexible(
-            child: FloatingActionButton(
-              heroTag: null,
-              onPressed: () => _openTimerStopModal(context),
-              child: Icon(Icons.stop),
-              backgroundColor: kPrimaryColor,
-            ),
-          ),
-          const SizedBox(width: 16),
-          Flexible(
-            child: FloatingActionButton(
-              heroTag: null,
-              onPressed: () => cubit.pause(),
-              child: Icon(Icons.pause),
-              backgroundColor: kPrimaryColor,
-            ),
-          ),
+            // _controller.restart(duration: _duration),
+          )
         ],
       ),
     );
   }
 
-  Widget _buildSkipBreakButton(BuildContext context) {
-    final cubit = context.read<TimerPomodoroCubit>();
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: FloatingActionButton(
-        heroTag: null,
-        onPressed: () => cubit.nextCycle(),
-        child: Icon(Icons.skip_next_rounded),
-        backgroundColor: kPrimaryColor,
+  Widget _button({required String title, VoidCallback? onPressed}) {
+    return Expanded(
+        child: ElevatedButton(
+      child: Text(
+        title,
+        style: const TextStyle(color: Colors.white),
       ),
-    );
-  }
-
-  Widget _buildResumeButton(BuildContext context) {
-    final cubit = context.read<TimerPomodoroCubit>();
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: FloatingActionButton(
-        heroTag: null,
-        onPressed: () => cubit.resume(),
-        child: Icon(Icons.navigate_next_rounded),
-        backgroundColor: kPrimaryColor,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(kPrimaryColor),
       ),
-    );
-  }
-
-  Widget _buildCrossFade(
-      Widget firstChild, Widget secondChild, bool showFristChild) {
-    return AnimatedCrossFade(
-      firstChild: firstChild,
-      secondChild: secondChild,
-      crossFadeState:
-          showFristChild ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-      duration: const Duration(milliseconds: 200),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final cubit = context.watch<TimerPomodoroCubit>();
-    final state = cubit.state;
-
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Padding(
-        padding: const EdgeInsets.all(
-          16,
-        ),
-        child: _buildCrossFade(
-          _buildStartButton(context),
-          _buildCrossFade(
-            _buildCrossFade(
-              _buildToggleButton(context),
-              _buildSkipBreakButton(context),
-              state.mode.isWork,
-            ),
-            _buildResumeButton(context),
-            state.status.isPaused == false,
-          ),
-          state.status.isStopped,
-        ),
-      ),
-    );
+      onPressed: onPressed,
+    ));
   }
 }
