@@ -9,6 +9,7 @@ import 'package:orodomop_app/presentation/pages/news/news_screen.dart';
 import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/edit_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
+import 'package:orodomop_app/presentation/pages/onboarding_screen.dart';
 import 'package:orodomop_app/presentation/pages/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +28,8 @@ class NavigationProvider extends ChangeNotifier {
 
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case OnBoardingScreen.route:
+        return MaterialPageRoute(builder: (_) => OnBoardingScreen());
       case EditNotePage.route:
         final notes = settings.arguments as NotesTable;
         return MaterialPageRoute(
