@@ -23,13 +23,34 @@ class _AddNotePageState extends State<AddNotePage> {
         actions: [
           IconButton(
             onPressed: () async {
-              final notes = NotesTable(
-                title: _titleControl.text,
-                contents: _contentControl.text,
-              );
-              Provider.of<NotesDatabaseProvider>(context, listen: false)
-                  .insertNote(notes);
-              Navigator.pop(context);
+              if (_titleControl.text.isEmpty) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Title is empty'),
+                    content: const Text('You have to fill in the title name'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, 'OK');
+                        },
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(color: kPrimaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                final notes = NotesTable(
+                  title: _titleControl.text,
+                  contents: _contentControl.text,
+                );
+                Provider.of<NotesDatabaseProvider>(context, listen: false)
+                    .insertNote(notes);
+                Navigator.pop(context);
+              }
             },
             icon: const Icon(Icons.done),
           )
@@ -85,7 +106,7 @@ class _AddNotePageState extends State<AddNotePage> {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
-                  hintText: 'Add what you supossed to do',
+                  hintText: 'Add what you supposed to do',
                   hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
