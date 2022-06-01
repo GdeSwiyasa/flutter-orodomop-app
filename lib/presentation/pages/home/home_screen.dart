@@ -1,7 +1,7 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
-import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro.dart';
+import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const route = '/home_screen';
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              Navigator.pushNamed(context, SetTimerPomodoro.route);
+              Navigator.pushNamed(context, SetTimerPomodoroScreen.route);
             },
             icon: const Icon(
               Icons.timer_outlined,
