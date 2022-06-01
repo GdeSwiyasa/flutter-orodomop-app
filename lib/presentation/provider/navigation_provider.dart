@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orodomop_app/data/models/notes.dart';
 import 'package:orodomop_app/domain/entities/screen.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
-import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro.dart';
+import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro_screen.dart';
 
 import 'package:orodomop_app/presentation/pages/main_view.dart';
 import 'package:orodomop_app/presentation/pages/news/news_screen.dart';
@@ -45,8 +45,8 @@ class NavigationProvider extends ChangeNotifier {
         switch (settings.name) {
           case HomeScreen.route:
             return MaterialPageRoute(builder: (_) => HomeScreen());
-          case SetTimerPomodoro.route:
-            return MaterialPageRoute(builder: (_) => SetTimerPomodoro());
+          case SetTimerPomodoroScreen.route:
+            return MaterialPageRoute(builder: (_) => SetTimerPomodoroScreen());
           default:
             return MaterialPageRoute(builder: (_) => HomeScreen());
         }
