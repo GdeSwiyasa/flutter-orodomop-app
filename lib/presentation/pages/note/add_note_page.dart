@@ -23,13 +23,50 @@ class _AddNotePageState extends State<AddNotePage> {
         actions: [
           IconButton(
             onPressed: () async {
-              final notes = NotesTable(
-                title: _titleControl.text,
-                contents: _contentControl.text,
-              );
-              Provider.of<NotesDatabaseProvider>(context, listen: false)
-                  .insertNote(notes);
-              Navigator.pop(context);
+              if (_titleControl.text.isEmpty) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Subject is empty'),
+                    content: const Text('You have to fill in the subject name'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, 'OK');
+                        },
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(color: kPrimaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                final notes = NotesTable(
+                  title: _titleControl.text,
+                  contents: _contentControl.text,
+                );
+                Provider.of<NotesDatabaseProvider>(context, listen: false)
+                    .insertNote(notes);
+                Navigator.pop(context);
+
+                final msg =
+                    Provider.of<NotesDatabaseProvider>(context, listen: false)
+                        .noteMsg;
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(msg),
+                    duration: Duration(seconds: 2),
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    backgroundColor: kPrimaryColor,
+                  ),
+                );
+              }
             },
             icon: const Icon(Icons.done),
           )
@@ -44,7 +81,7 @@ class _AddNotePageState extends State<AddNotePage> {
           ),
         ),
         backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: blackColor),
+        iconTheme: const IconThemeData(color: kPrimaryColor),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -85,7 +122,7 @@ class _AddNotePageState extends State<AddNotePage> {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
-                  hintText: 'Add what you supossed to do',
+                  hintText: 'Add what you supposed to do',
                   hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),

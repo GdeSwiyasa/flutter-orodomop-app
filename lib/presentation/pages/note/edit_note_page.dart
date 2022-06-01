@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/data/models/notes.dart';
-import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -42,20 +41,73 @@ class _EditNotePageState extends State<EditNotePage> {
             onPressed: () {
               Provider.of<NotesDatabaseProvider>(context, listen: false)
                   .deleteNote(widget.notes!.id!);
+
+              final msg =
+                  Provider.of<NotesDatabaseProvider>(context, listen: false)
+                      .noteMsg;
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(msg),
+                  duration: Duration(seconds: 2),
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  backgroundColor: kPrimaryColor,
+                ),
+              );
               Navigator.pop(context);
             },
             icon: const Icon(Icons.delete_outline_rounded),
           ),
           IconButton(
             onPressed: () {
-              final notes = NotesTable(
-                id: widget.notes!.id,
-                title: _titleControl.text,
-                contents: _contentControl.text,
-              );
-              Provider.of<NotesDatabaseProvider>(context, listen: false)
-                  .updateNotes(notes);
-              Navigator.pop(context);
+              if (_titleControl.text.isEmpty) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Subject is empty'),
+                    content: const Text('You have to fill in the subject name'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, 'OK');
+                        },
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(color: kPrimaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                final notes = NotesTable(
+                  id: widget.notes!.id,
+                  title: _titleControl.text,
+                  contents: _contentControl.text,
+                );
+                Provider.of<NotesDatabaseProvider>(context, listen: false)
+                    .updateNotes(notes);
+
+                final msg =
+                    Provider.of<NotesDatabaseProvider>(context, listen: false)
+                        .noteMsg;
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(msg),
+                    duration: Duration(seconds: 2),
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    backgroundColor: kPrimaryColor,
+                  ),
+                );
+                Navigator.pop(context);
+              }
             },
             icon: const Icon(Icons.done),
           )
@@ -69,7 +121,7 @@ class _EditNotePageState extends State<EditNotePage> {
           ),
         ),
         backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: blackColor),
+        iconTheme: const IconThemeData(color: kPrimaryColor),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -77,13 +129,17 @@ class _EditNotePageState extends State<EditNotePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const Text('Subject'),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
+              Text(
+                'Subject',
+                style: kHeading5,
+              ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _titleControl,
                 decoration: InputDecoration(
                   hintText: 'Add subject',
-                  hintStyle: const TextStyle(fontSize: 12, color: Colors.grey),
+                  hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(color: blackColor, width: 1),
@@ -94,9 +150,12 @@ class _EditNotePageState extends State<EditNotePage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 32),
-              const Text('To-do'),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
+              Text(
+                'To-do',
+                style: kHeading5,
+              ),
+              const SizedBox(height: 16),
               TextField(
                 controller: _contentControl,
                 cursorColor: blackColor,
@@ -104,7 +163,7 @@ class _EditNotePageState extends State<EditNotePage> {
                 maxLines: null,
                 decoration: InputDecoration(
                   hintText: 'Add what you supossed to do',
-                  hintStyle: const TextStyle(fontSize: 12, color: Colors.grey),
+                  hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: const BorderSide(color: blackColor, width: 1),

@@ -59,7 +59,7 @@ class NoteScreen extends StatelessWidget {
           } else {
             return Center(
               child: Text(
-                'You have not make a note yet',
+                'You have not made any notes yet',
                 style: kSubtitle.copyWith(color: Colors.grey),
               ),
             );
