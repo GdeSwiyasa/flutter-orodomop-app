@@ -4,6 +4,7 @@ import 'package:orodomop_app/common/utils.dart';
 
 import 'package:orodomop_app/presentation/provider/navigation_provider.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
+import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 
 import 'package:provider/provider.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
-        ChangeNotifierProvider(create: (_) => NotesDatabaseProvider())
+        ChangeNotifierProvider(create: (_) => NotesDatabaseProvider()),
+        ChangeNotifierProvider(create: (_) => TimerProvider()),
       ],
       child: Builder(
         builder: (context) {
