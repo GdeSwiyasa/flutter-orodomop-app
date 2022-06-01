@@ -27,8 +27,8 @@ class _AddNotePageState extends State<AddNotePage> {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: const Text('Title is empty'),
-                    content: const Text('You have to fill in the title name'),
+                    title: const Text('Subject is empty'),
+                    content: const Text('You have to fill in the subject name'),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
@@ -50,6 +50,22 @@ class _AddNotePageState extends State<AddNotePage> {
                 Provider.of<NotesDatabaseProvider>(context, listen: false)
                     .insertNote(notes);
                 Navigator.pop(context);
+
+                final msg =
+                    Provider.of<NotesDatabaseProvider>(context, listen: false)
+                        .noteMsg;
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(msg),
+                    duration: Duration(seconds: 2),
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    backgroundColor: kPrimaryColor,
+                  ),
+                );
               }
             },
             icon: const Icon(Icons.done),
@@ -65,7 +81,7 @@ class _AddNotePageState extends State<AddNotePage> {
           ),
         ),
         backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: blackColor),
+        iconTheme: const IconThemeData(color: kPrimaryColor),
       ),
       body: SingleChildScrollView(
         child: Padding(

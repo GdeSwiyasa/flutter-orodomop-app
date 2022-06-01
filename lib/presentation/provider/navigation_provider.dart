@@ -30,6 +30,12 @@ class NavigationProvider extends ChangeNotifier {
     switch (settings.name) {
       case OnBoardingScreen.route:
         return MaterialPageRoute(builder: (_) => OnBoardingScreen());
+      case EditNotePage.route:
+        final notes = settings.arguments as NotesTable;
+        return MaterialPageRoute(
+            builder: (_) => EditNotePage(notes: notes), settings: settings);
+      case SetTimerPomodoroScreen.route:
+        return MaterialPageRoute(builder: (_) => SetTimerPomodoroScreen());
       case AddNotePage.route:
         return MaterialPageRoute(builder: (_) => AddNotePage());
       default:
@@ -46,8 +52,6 @@ class NavigationProvider extends ChangeNotifier {
       navigatorState: GlobalKey<NavigatorState>(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
-          case HomeScreen.route:
-            return MaterialPageRoute(builder: (_) => HomeScreen());
           case SetTimerPomodoroScreen.route:
             return MaterialPageRoute(builder: (_) => SetTimerPomodoroScreen());
           default:
