@@ -234,6 +234,8 @@ class SetTimerPomodoroScreen extends StatelessWidget {
                             ],
                           ),
                         ),
+                        // onPressed: () =>
+                        //     Navigator.pushNamed(context, HomeScreen.route),
                       ),
                     ),
                   ],
