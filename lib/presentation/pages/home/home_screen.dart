@@ -14,7 +14,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              Navigator.pushNamed(context, SetTimerPomodoroScreen.route);
+              Navigator.of(context, rootNavigator: true)
+                  .pushNamed(SetTimerPomodoroScreen.route);
             },
             icon: const Icon(
               Icons.timer_outlined,

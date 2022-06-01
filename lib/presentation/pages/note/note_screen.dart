@@ -40,8 +40,9 @@ class NoteScreen extends StatelessWidget {
                             print(db.notes.length);
                             final selectedNote =
                                 await db.getNoteById(notes.id!);
-                            Navigator.pushNamed(context, EditNotePage.route,
-                                arguments: selectedNote);
+                            Navigator.of(context, rootNavigator: true)
+                                .pushNamed(EditNotePage.route,
+                                    arguments: selectedNote);
                           },
                           icon: const Icon(
                             Icons.edit,
