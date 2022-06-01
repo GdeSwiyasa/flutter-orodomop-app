@@ -5,7 +5,7 @@ import 'package:orodomop_app/presentation/provider/navigation_provider.dart';
 import 'package:provider/provider.dart';
 
 class MainView extends StatefulWidget {
-  static const route = '/';
+  static const route = '/main_view';
   const MainView({Key? key}) : super(key: key);
 
   @override
