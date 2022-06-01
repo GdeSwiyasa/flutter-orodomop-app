@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
 
-class SetTimerPomodoro extends StatelessWidget {
+class SetTimerPomodoroScreen extends StatelessWidget {
   static const route = '/set-timer-pomodoro';
-  const SetTimerPomodoro({Key? key}) : super(key: key);
+  const SetTimerPomodoroScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
