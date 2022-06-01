@@ -17,7 +17,7 @@ class TimerProvider extends ChangeNotifier {
   int _focusDuration = 5;
   int get focusDuration => _focusDuration;
 
-  int _cycle = 4;
+  int _cycle = 2 * 2;
   set cycle(int value) {
     _cycle = value;
   }

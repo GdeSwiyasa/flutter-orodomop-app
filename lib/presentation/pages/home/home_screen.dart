@@ -138,11 +138,9 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                   if (provider.focusStatus == true) {
                     provider.focusStatus = false;
                     provider.restartTimer(provider.breakDuration);
-                    debugPrint('Focus ended');
                   } else {
                     provider.focusStatus = true;
                     provider.restartTimer(provider.focusDuration);
-                    debugPrint('Break ended');
                   }
                 }
               },
