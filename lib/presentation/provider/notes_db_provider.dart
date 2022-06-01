@@ -5,7 +5,7 @@ import 'package:orodomop_app/data/models/notes.dart';
 class NotesDatabaseProvider extends ChangeNotifier {
   late DatabaseHelper _databaseHelper;
 
-  late List<NotesTable> _notes;
+  List<NotesTable> _notes = [];
   List<NotesTable> get notes => _notes;
 
   NotesDatabaseProvider() {
