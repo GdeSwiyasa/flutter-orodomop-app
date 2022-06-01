@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 
 class SetTimerPomodoroScreen extends StatelessWidget {
   static const route = '/set-timer-pomodoro';
@@ -49,7 +50,7 @@ class SetTimerPomodoroScreen extends StatelessWidget {
                         Container(
                           child: TextField(
                             cursorColor: blackColor,
-                            keyboardType: TextInputType.multiline,
+                            keyboardType: TextInputType.number,
                             maxLines: null,
                             decoration: InputDecoration(
                               hintText: 'second',
@@ -94,7 +95,7 @@ class SetTimerPomodoroScreen extends StatelessWidget {
                         Container(
                           child: TextField(
                             cursorColor: blackColor,
-                            keyboardType: TextInputType.multiline,
+                            keyboardType: TextInputType.number,
                             maxLines: null,
                             decoration: InputDecoration(
                               hintText: 'second',
@@ -138,7 +139,7 @@ class SetTimerPomodoroScreen extends StatelessWidget {
                     Container(
                       child: TextField(
                         cursorColor: blackColor,
-                        keyboardType: TextInputType.multiline,
+                        keyboardType: TextInputType.number,
                         maxLines: null,
                         decoration: InputDecoration(
                           hintText: 'How much do you want to iterate pomodoro',
@@ -152,6 +153,85 @@ class SetTimerPomodoroScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                             borderSide:
                                 const BorderSide(color: blackColor, width: 1),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Center(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      width: 237,
+                      height: 40,
+                      child: ElevatedButton(
+                        child: Text(
+                          'Save',
+                          style: kSubtitle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: whiteColor,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(kPrimaryColor),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    SizedBox(
+                      width: 237,
+                      height: 40,
+                      child: ElevatedButton(
+                        child: Text(
+                          'Discard',
+                          style: kSubtitle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: blackColor,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(whiteColor),
+                          elevation: MaterialStateProperty.all(0),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                        ),
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Discard chance'),
+                            content: const Text(
+                                'Are you sure to Discard your chance?'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(context, 'Cancel'),
+                                child: const Text(
+                                  'Cancel',
+                                  style: TextStyle(color: grayColor),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  'OK',
+                                  style: TextStyle(color: kPrimaryColor),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

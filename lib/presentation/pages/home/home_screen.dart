@@ -141,28 +141,28 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
             width: 30,
           ),
           _button(
-            title: "Start",
+            icon: Icons.play_arrow_rounded,
             onPressed: () => _controller.start(),
           ),
           const SizedBox(
             width: 10,
           ),
           _button(
-            title: "Pause",
+            icon: Icons.pause,
             onPressed: () => _controller.pause(),
           ),
           const SizedBox(
             width: 10,
           ),
           _button(
-            title: "Resume",
+            icon: Icons.navigate_next_rounded,
             onPressed: () => _controller.resume(),
           ),
           const SizedBox(
             width: 10,
           ),
           _button(
-            title: "Restart",
+            icon: Icons.restart_alt,
             onPressed: () => showDialog<String>(
               context: context,
               builder: (BuildContext context) => AlertDialog(
@@ -195,15 +195,21 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
     );
   }
 
-  Widget _button({required String title, VoidCallback? onPressed}) {
+  Widget _button({required IconData icon, VoidCallback? onPressed}) {
     return Expanded(
       child: ElevatedButton(
-        child: Text(
-          title,
-          style: const TextStyle(color: Colors.white),
+        child: Icon(
+          icon,
+          size: 25.0,
+          color: whiteColor,
         ),
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(kPrimaryColor),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+            ),
+          ),
         ),
         onPressed: onPressed,
       ),
