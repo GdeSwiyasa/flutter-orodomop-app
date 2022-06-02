@@ -117,11 +117,11 @@ class _EditNotePageState extends State<EditNotePage> {
           padding: const EdgeInsets.all(10.0),
           child: Text(
             'Your Note',
-            style: kHeading5.copyWith(color: blackColor),
+            style: kHeading5.copyWith(color: Theme.of(context).primaryColor),
           ),
         ),
-        backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: kPrimaryColor),
+        backgroundColor: Theme.of(context).backgroundColor,
+        iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
       ),
       body: SingleChildScrollView(
         child: Padding(

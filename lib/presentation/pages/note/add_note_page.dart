@@ -77,11 +77,11 @@ class _AddNotePageState extends State<AddNotePage> {
           padding: const EdgeInsets.all(10.0),
           child: Text(
             'Create Note',
-            style: kHeading5.copyWith(color: blackColor),
+            style: kHeading5.copyWith(color: Theme.of(context).primaryColor),
           ),
         ),
-        backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: kPrimaryColor),
+        backgroundColor: Theme.of(context).backgroundColor,
+        iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
       ),
       body: SingleChildScrollView(
         child: Padding(
