@@ -212,7 +212,20 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                 ),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              provider.breakDuration =
+                                  int.parse(_breakTime.text);
+                              provider.cycle = int.parse(_cycle.text);
+                              provider.focusDuration =
+                                  int.parse(_focusTime.text);
+
+                              // Provider.of<TimerProvider>(context, listen: false)
+                              //     .breakDuration;
+                              // Provider.of<TimerProvider>(context, listen: false)
+                              //     .focusDuration;
+                              // Provider.of<TimerProvider>(context, listen: false)
+                              //     .cycle;
+                            },
                           ),
                         ),
                         SizedBox(
