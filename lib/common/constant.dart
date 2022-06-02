@@ -11,7 +11,7 @@ const Color whiteColor = Colors.white;
 
 //TextStyle
 final TextStyle kHeading5 =
-    GoogleFonts.montserrat(fontSize: 24, fontWeight: FontWeight.w600);
+    GoogleFonts.montserrat(fontSize: 22, fontWeight: FontWeight.w600);
 final TextStyle kHeading6 =
     GoogleFonts.montserrat(fontSize: 20, fontWeight: FontWeight.w500);
 final TextStyle kTitle =

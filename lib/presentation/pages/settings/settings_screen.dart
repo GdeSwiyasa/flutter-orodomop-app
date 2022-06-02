@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
-import 'package:orodomop_app/presentation/widgets/app_bar.dart';
+import 'package:orodomop_app/presentation/pages/settings/theme_settings_screen.dart';
+import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
+import 'package:orodomop_app/presentation/widgets/custom_text_button.dart';
 import 'package:orodomop_app/presentation/widgets/settings_card_item.dart';
+import 'package:provider/provider.dart';
+import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const route = '/settings_screen';
@@ -9,6 +13,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
       appBar: buildAppBar(
         appBar: AppBar(),
@@ -19,40 +24,14 @@ class SettingsScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Column(
               children: [
-                _generalSettingsItem(),
+                _generalSettingsItem(context),
               ],
             )),
       ),
     );
   }
 
-  TextButton _textBuildButton(String title, String subTitle) {
-    return TextButton(
-      onPressed: () {},
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: kSubtitle.copyWith(color: blackColor),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Text(
-            subTitle,
-            style: kBodyText.copyWith(color: blackColor),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(),
-        ],
-      ),
-    );
-  }
-
-  Widget _generalSettingsItem() {
+  Widget _generalSettingsItem(BuildContext context) {
     return CustomSettingsCard(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 14),
@@ -61,28 +40,37 @@ class SettingsScreen extends StatelessWidget {
           children: [
             Text(
               'General',
-              style: kTitle.copyWith(
-                  color: blackColor, fontWeight: FontWeight.bold),
+              style: kTitle.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 20,
             ),
-            _textBuildButton(
-              'Language',
-              'adjust the language according to your needs',
-            ),
+            CustomTextButton(
+                isSwiched: false,
+                title: 'Language',
+                subTitle: 'adjust the language according to your needs',
+                onTap: () {}),
             Container(
               color: blackColor.withOpacity(0.1),
               height: 1.0,
             ),
-            _textBuildButton(
-                'Theme', 'adjust the theme according to your needs'),
+            CustomTextButton(
+                isSwiched: false,
+                title: 'Theme',
+                subTitle: 'adjust the theme according to your needs',
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .pushNamed(ThemeSettingScreen.route);
+                }),
             Container(
               color: blackColor.withOpacity(0.1),
               height: 1.0,
             ),
-            _textBuildButton('Notifications',
-                'adjust the notifications according to your needs'),
+            CustomTextButton(
+                isSwiched: false,
+                title: 'Notifications',
+                subTitle: 'adjust the notifications according to your needs',
+                onTap: () {}),
             Container(
               color: Colors.grey.withOpacity(0.1),
               height: 1.0,

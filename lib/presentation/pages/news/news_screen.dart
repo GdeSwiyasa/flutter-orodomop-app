@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 
 class NewsScreen extends StatelessWidget {
   static const route = '/news_screen';
@@ -7,9 +8,9 @@ class NewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("News Screen"),
-        centerTitle: true,
+      appBar: buildAppBar(
+        appBar: AppBar(),
+        title: 'News',
       ),
       body: Center(
         child: Text("News Screen"),

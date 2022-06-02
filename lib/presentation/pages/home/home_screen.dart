@@ -19,23 +19,22 @@ class HomeScreen extends StatelessWidget {
               Navigator.of(context, rootNavigator: true)
                   .pushNamed(SetTimerPomodoroScreen.route);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.timer_outlined,
-              color: kPrimaryColor,
+              color: Theme.of(context).primaryColor,
             ),
           )
         ],
+        backgroundColor: Theme.of(context).backgroundColor,
         centerTitle: true,
         elevation: 0,
         title: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
             'Orodomop',
-            style: kHeading5.copyWith(color: blackColor),
+            style: kHeading5.copyWith(color: Theme.of(context).primaryColor),
           ),
         ),
-        backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: blackColor),
       ),
       body: PomodoroTimer(
         title: "Home Screen",

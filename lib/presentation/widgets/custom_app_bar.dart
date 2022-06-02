@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/common/dark_theme.dart';
 
 class buildAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
@@ -12,16 +13,16 @@ class buildAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
+      backgroundColor: Theme.of(context).backgroundColor,
       elevation: 0,
       title: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(
           title.toString(),
-          style: kHeading5.copyWith(color: blackColor),
+          style: kHeading5.copyWith(color: Theme.of(context).primaryColor),
         ),
       ),
-      backgroundColor: whiteColor,
-      iconTheme: IconThemeData(color: blackColor),
+      // iconTheme: IconThemeData(color: blackColor),
     );
   }
 

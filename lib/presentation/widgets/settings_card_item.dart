@@ -18,7 +18,8 @@ class CustomSettingsCard extends StatelessWidget {
         ),
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            color: whiteColor,
+            // color: Colors.green,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(18.0),
             boxShadow: [
               BoxShadow(

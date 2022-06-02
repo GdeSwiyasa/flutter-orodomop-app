@@ -3,7 +3,7 @@ import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/edit_note_page.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
-import 'package:orodomop_app/presentation/widgets/app_bar.dart';
+import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 
 class NoteScreen extends StatelessWidget {

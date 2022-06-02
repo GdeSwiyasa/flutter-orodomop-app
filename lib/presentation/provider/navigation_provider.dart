@@ -11,6 +11,7 @@ import 'package:orodomop_app/presentation/pages/note/edit_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/note_screen.dart';
 import 'package:orodomop_app/presentation/pages/onboarding_screen.dart';
 import 'package:orodomop_app/presentation/pages/settings/settings_screen.dart';
+import 'package:orodomop_app/presentation/pages/settings/theme_settings_screen.dart';
 import 'package:provider/provider.dart';
 
 const homeScreen = 0;
@@ -36,6 +37,8 @@ class NavigationProvider extends ChangeNotifier {
             builder: (_) => EditNotePage(notes: notes), settings: settings);
       case SetTimerPomodoroScreen.route:
         return MaterialPageRoute(builder: (_) => SetTimerPomodoroScreen());
+      case ThemeSettingScreen.route:
+        return MaterialPageRoute(builder: (_) => ThemeSettingScreen());
       case AddNotePage.route:
         return MaterialPageRoute(builder: (_) => AddNotePage());
       default:
