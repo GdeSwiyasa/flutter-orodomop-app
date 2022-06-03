@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TimerProvider extends ChangeNotifier {
@@ -50,6 +51,7 @@ class TimerProvider extends ChangeNotifier {
     _focusDuration = prefs.getInt('focusDuration')!;
     _numCycle = prefs.getInt('numCycle')!;
     _cycle = _numCycle * 2;
+    focusStatus = true;
     notifyListeners();
 
     print('focus: ' + focusDuration.toString());

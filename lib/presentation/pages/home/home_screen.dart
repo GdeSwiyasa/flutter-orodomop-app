@@ -1,5 +1,6 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro_screen.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
@@ -134,7 +135,7 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
               isTimerTextShown: true,
 
               // Handles the timer start.
-              autoStart: false,
+              autoStart: true,
 
               // This Callback will execute when the Countdown Starts.
               onStart: () {
@@ -179,9 +180,14 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                 width: 30,
               ),
               _button(
-                icon: Icons.play_arrow_rounded,
-                onPressed: () => provider.startTimerFocus(),
-              ),
+                  icon: Icons.play_arrow_rounded,
+                  onPressed: () {
+                    provider.startTimerFocus();
+                    if (provider.cycle < 0) {
+                      Phoenix.rebirth(context);
+                      provider.startTimerFocus();
+                    }
+                  }),
               const SizedBox(
                 width: 10,
               ),
@@ -217,7 +223,9 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context, 'OK');
-                          provider.restartTimer(provider.focusDuration);
+                          // provider.restartTimer(provider.focusDuration);
+                          provider.startTimerFocus();
+                          Phoenix.rebirth(context);
                         },
                         child: const Text(
                           'OK',

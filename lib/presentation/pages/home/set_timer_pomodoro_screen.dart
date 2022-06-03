@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
@@ -234,6 +235,7 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                   );
                               Navigator.of(context, rootNavigator: true)
                                   .pushNamed(HomeScreen.route);
+                              Phoenix.rebirth(context);
 
                               // showDialog<String>(
                               //   barrierDismissible: false,

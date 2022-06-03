@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/dark_theme.dart';
 import 'package:orodomop_app/common/utils.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
@@ -18,7 +19,11 @@ void main() async {
   SharedPreferences pref = await SharedPreferences.getInstance();
   showHome = pref.getBool('showHome') ?? false;
 
-  runApp(MyApp());
+  runApp(
+    Phoenix(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
