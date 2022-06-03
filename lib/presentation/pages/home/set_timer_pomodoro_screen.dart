@@ -232,7 +232,8 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                   // int.parse(_breakTime.text),
                                   // int.parse(_cycle.text),
                                   );
-                              Navigator.pop(context);
+                              Navigator.of(context, rootNavigator: true)
+                                  .pushNamed(HomeScreen.route);
 
                               // showDialog<String>(
                               //   barrierDismissible: false,
