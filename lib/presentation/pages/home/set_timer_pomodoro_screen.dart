@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SetTimerPomodoroScreen extends StatefulWidget {
   static const route = '/set-timer-pomodoro';
@@ -19,10 +21,11 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
   final TextEditingController _cycle = TextEditingController();
 
   void initState() {
-    _focusTime.text = provider.focusDuration.toString();
-    _breakTime.text = provider.breakDuration.toString();
-    _cycle.text = provider.cycle.toString();
     super.initState();
+
+    Future.microtask(
+      () => Provider.of<TimerProvider>(context, listen: false).loadTimer(),
+    );
   }
 
   @override
@@ -43,6 +46,9 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
       ),
       body: Consumer<TimerProvider>(
         builder: (context, provider, child) {
+          _focusTime.text = provider.focusDuration.toString();
+          _breakTime.text = provider.breakDuration.toString();
+          _cycle.text = provider.numCycle.toString();
           return Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -212,12 +218,42 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                 ),
                               ),
                             ),
-                            onPressed: () {
-                              provider.breakDuration =
-                                  int.parse(_breakTime.text);
-                              provider.cycle = int.parse(_cycle.text);
-                              provider.focusDuration =
-                                  int.parse(_focusTime.text);
+                            onPressed: () async {
+                              // provider.breakDuration =
+                              //     int.parse(_breakTime.text);
+                              // provider.cycle = int.parse(_cycle.text);
+                              // provider.focusDuration =
+                              //     int.parse(_focusTime.text);
+
+                              await provider.saveData(
+                                  breakDuration: int.parse(_breakTime.text),
+                                  focusDuration: int.parse(_focusTime.text),
+                                  numCycle: int.parse(_cycle.text)
+                                  // int.parse(_breakTime.text),
+                                  // int.parse(_cycle.text),
+                                  );
+                              Navigator.pop(context);
+
+                              // showDialog<String>(
+                              //   barrierDismissible: false,
+                              //   context: context,
+                              //   builder: (BuildContext context) => AlertDialog(
+                              //     title: const Text('Discard chance'),
+                              //     content: const Text('Sucess Update Data!'),
+                              //     actions: <Widget>[
+                              //       TextButton(
+                              //         onPressed: () {
+                              //           Navigator.pop(context);
+                              //           Navigator.pop(context);
+                              //         },
+                              //         child: const Text(
+                              //           'OK',
+                              //           style: TextStyle(color: kPrimaryColor),
+                              //         ),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // );
 
                               // Provider.of<TimerProvider>(context, listen: false)
                               //     .breakDuration;

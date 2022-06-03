@@ -53,10 +53,22 @@ class PomodoroTimer extends StatefulWidget {
 }
 
 class _PomodoroTimerState extends State<PomodoroTimer> {
+  int cycleFront = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.microtask(
+      () => Provider.of<TimerProvider>(context, listen: false).loadTimer(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TimerProvider>(
       builder: (context, provider, child) {
+        // cycleFront = provider.cycle * 2;
+        // int duration = provider.focusDuration;
         return Scaffold(
           body: Align(
             alignment: Alignment.topCenter,
@@ -126,20 +138,35 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
 
               // This Callback will execute when the Countdown Starts.
               onStart: () {
-                // Here, do whatever you want
+                // Here, do whatever you want11
+
+                print(provider.cycle);
                 provider.cycle--;
               },
 
               // This Callback will execute when the Countdown Ends.
               onComplete: () {
+                print(provider.focusDuration);
                 // Here, do whatever you want
+
+                // if (!provider.focusStatus) {
+                //   provider.restartTimer(provider.breakDuration);
+                //   provider.focusStatus = false;
+                //   print(provider.focusStatus);
+                // } else {
+                //   provider.restartTimer(provider.focusDuration);
+                //   provider.focusStatus = true;
+                //   print(provider.focusStatus);
+                // }
                 if (provider.cycle > 0) {
-                  if (provider.focusStatus == true) {
+                  if (provider.focusStatus) {
                     provider.focusStatus = false;
-                    provider.restartTimer(provider.breakDuration);
+                    provider.restartTimer(provider.focusDuration);
+                    print(provider.focusStatus);
                   } else {
                     provider.focusStatus = true;
-                    provider.restartTimer(provider.focusDuration);
+                    provider.restartTimer(provider.breakDuration);
+                    print(provider.focusStatus);
                   }
                 }
               },
