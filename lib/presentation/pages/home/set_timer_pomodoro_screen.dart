@@ -3,6 +3,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
+import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,18 +33,9 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            'Set Timer',
-            style: kHeading5.copyWith(color: blackColor),
-          ),
-        ),
-        backgroundColor: whiteColor,
-        iconTheme: const IconThemeData(color: blackColor),
+      appBar: buildAppBar(
+        appBar: AppBar(),
+        title: "Set Timer",
       ),
       body: Consumer<TimerProvider>(
         builder: (context, provider, child) {
