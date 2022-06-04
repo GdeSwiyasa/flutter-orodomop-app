@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/common/locale/locale_keys.g.dart';
 
 import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 import 'package:orodomop_app/presentation/widgets/custom_text_button.dart';
@@ -19,7 +20,7 @@ class _LanguageSettingScreenState extends State<LanguageSettingScreen> {
     return Scaffold(
       appBar: buildAppBar(
         appBar: AppBar(),
-        title: 'Language',
+        title: LocaleKeys.language.tr(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -27,8 +28,8 @@ class _LanguageSettingScreenState extends State<LanguageSettingScreen> {
           children: [
             CustomSettingsCard(
               child: CustomTextButton(
-                title: 'Select language',
-                subTitle: 'Select language do you need',
+                title: LocaleKeys.select_language.tr(),
+                subTitle: LocaleKeys.select_language_args.tr(),
                 onTap: () {
                   _languageDialog();
                 },

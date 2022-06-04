@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/common/locale/locale_keys.g.dart';
 import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/edit_note_page.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
@@ -60,7 +62,7 @@ class NoteScreen extends StatelessWidget {
           } else {
             return Center(
               child: Text(
-                'You have not made any notes yet',
+                LocaleKeys.note_empty.tr(),
                 style: kSubtitle.copyWith(color: Colors.grey),
               ),
             );

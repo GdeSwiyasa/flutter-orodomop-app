@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/common/locale/locale_keys.g.dart';
 import 'package:orodomop_app/data/models/notes.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:provider/provider.dart';
@@ -67,8 +69,8 @@ class _EditNotePageState extends State<EditNotePage> {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: const Text('Subject is empty'),
-                    content: const Text('You have to fill in the subject name'),
+                    title: Text(LocaleKeys.note_msg.tr()),
+                    content: Text(LocaleKeys.note_msg_content.tr()),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
@@ -138,7 +140,7 @@ class _EditNotePageState extends State<EditNotePage> {
               TextField(
                 controller: _titleControl,
                 decoration: InputDecoration(
-                  hintText: 'Add subject',
+                  hintText: LocaleKeys.note_subject.tr(),
                   hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -162,7 +164,7 @@ class _EditNotePageState extends State<EditNotePage> {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 decoration: InputDecoration(
-                  hintText: 'Add what you supossed to do',
+                  hintText: LocaleKeys.note_todo.tr(),
                   hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),

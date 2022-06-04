@@ -51,7 +51,7 @@ class SettingsScreen extends StatelessWidget {
             CustomTextButton(
                 isSwiched: false,
                 title: LocaleKeys.language.tr(),
-                subTitle: 'adjust the language according to your needs',
+                subTitle: LocaleKeys.language_args.tr(),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true)
                       .pushNamed(LanguageSettingScreen.route);
@@ -63,7 +63,7 @@ class SettingsScreen extends StatelessWidget {
             CustomTextButton(
                 isSwiched: false,
                 title: LocaleKeys.theme.tr(),
-                subTitle: 'adjust the theme according to your needs',
+                subTitle: LocaleKeys.theme_args.tr(),
                 onTap: () {
                   Navigator.of(context, rootNavigator: true)
                       .pushNamed(ThemeSettingScreen.route);
@@ -75,7 +75,7 @@ class SettingsScreen extends StatelessWidget {
             CustomTextButton(
                 isSwiched: false,
                 title: LocaleKeys.notification.tr(),
-                subTitle: 'adjust the notifications according to your needs',
+                subTitle: LocaleKeys.notifications_args.tr(),
                 onTap: () {}),
             Container(
               color: Colors.grey.withOpacity(0.1),
