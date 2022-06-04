@@ -1,5 +1,6 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro_screen.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
@@ -53,10 +54,22 @@ class PomodoroTimer extends StatefulWidget {
 }
 
 class _PomodoroTimerState extends State<PomodoroTimer> {
+  int cycleFront = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.microtask(
+      () => Provider.of<TimerProvider>(context, listen: false).loadTimer(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TimerProvider>(
       builder: (context, provider, child) {
+        // cycleFront = provider.cycle * 2;
+        // int duration = provider.focusDuration;
         return Scaffold(
           body: Align(
             alignment: Alignment.topCenter,
@@ -122,24 +135,39 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
               isTimerTextShown: true,
 
               // Handles the timer start.
-              autoStart: false,
+              autoStart: true,
 
               // This Callback will execute when the Countdown Starts.
               onStart: () {
-                // Here, do whatever you want
+                // Here, do whatever you want11
+
+                print(provider.cycle);
                 provider.cycle--;
               },
 
               // This Callback will execute when the Countdown Ends.
               onComplete: () {
+                print(provider.focusDuration);
                 // Here, do whatever you want
+
+                // if (!provider.focusStatus) {
+                //   provider.restartTimer(provider.breakDuration);
+                //   provider.focusStatus = false;
+                //   print(provider.focusStatus);
+                // } else {
+                //   provider.restartTimer(provider.focusDuration);
+                //   provider.focusStatus = true;
+                //   print(provider.focusStatus);
+                // }
                 if (provider.cycle > 0) {
-                  if (provider.focusStatus == true) {
+                  if (provider.focusStatus) {
                     provider.focusStatus = false;
-                    provider.restartTimer(provider.breakDuration);
+                    provider.restartTimer(provider.focusDuration);
+                    print(provider.focusStatus);
                   } else {
                     provider.focusStatus = true;
-                    provider.restartTimer(provider.focusDuration);
+                    provider.restartTimer(provider.breakDuration);
+                    print(provider.focusStatus);
                   }
                 }
               },
@@ -152,9 +180,14 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                 width: 30,
               ),
               _button(
-                icon: Icons.play_arrow_rounded,
-                onPressed: () => provider.startTimerFocus(),
-              ),
+                  icon: Icons.play_arrow_rounded,
+                  onPressed: () {
+                    provider.startTimerFocus();
+                    if (provider.cycle < 0) {
+                      Phoenix.rebirth(context);
+                      provider.startTimerFocus();
+                    }
+                  }),
               const SizedBox(
                 width: 10,
               ),
@@ -190,7 +223,9 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context, 'OK');
-                          provider.restartTimer(provider.focusDuration);
+                          // provider.restartTimer(provider.focusDuration);
+                          provider.startTimerFocus();
+                          Phoenix.rebirth(context);
                         },
                         child: const Text(
                           'OK',

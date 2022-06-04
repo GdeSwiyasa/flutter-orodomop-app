@@ -32,6 +32,7 @@ dependencies:
   easy_localization: ^3.0.0
   flutter:
     sdk: flutter
+  flutter_phoenix: ^1.0.0
   flutter_test:
     sdk: flutter
   google_fonts: ^3.0.1

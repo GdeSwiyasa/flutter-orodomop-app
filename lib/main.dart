@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/dark_theme.dart';
 import 'package:orodomop_app/common/utils.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
@@ -21,11 +22,14 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('id')],
-        path:
-            'assets/translations', // <-- change the path of the translation files
-        fallbackLocale: Locale('en'),
-        child: MyApp()),
+      supportedLocales: [Locale('en'), Locale('id')],
+      path:
+          'assets/translations', // <-- change the path of the translation files
+      fallbackLocale: Locale('en'),
+      child: Phoenix(
+        child: MyApp(),
+      ),
+    ),
   );
 }
 
