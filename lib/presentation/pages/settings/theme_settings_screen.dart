@@ -30,8 +30,3 @@ class ThemeSettingScreen extends StatelessWidget {
     );
   }
 }
-//  Checkbox(
-//                     value: themeChange.darkTheme,
-//                     onChanged: (value) {
-//                       themeChange.darkTheme = value!;
-//                     })

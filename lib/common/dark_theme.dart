@@ -20,7 +20,7 @@ class Styles {
     return ThemeData(
       primarySwatch: Colors.grey,
       primaryColor: isDarkTheme ? Colors.white : Colors.black,
-      backgroundColor: isDarkTheme ? Color(0xFF151515) : Colors.grey[75],
+      backgroundColor: isDarkTheme ? Color(0xFF151515) : Colors.white,
       cardColor: isDarkTheme ? Color(0xFF151515) : Colors.grey[75],
       canvasColor: isDarkTheme ? Color(0xff181A20) : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,

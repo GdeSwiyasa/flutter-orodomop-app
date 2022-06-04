@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/dark_theme.dart';
 import 'package:orodomop_app/common/utils.dart';
@@ -14,16 +15,21 @@ bool? showHome;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await EasyLocalization.ensureInitialized();
   SharedPreferences pref = await SharedPreferences.getInstance();
   showHome = pref.getBool('showHome') ?? false;
 
-  runApp(MyApp());
+  runApp(
+    EasyLocalization(
+        supportedLocales: [Locale('en'), Locale('id')],
+        path:
+            'assets/translations', // <-- change the path of the translation files
+        fallbackLocale: Locale('en'),
+        child: MyApp()),
+  );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -54,6 +60,9 @@ class _MyAppState extends State<MyApp> {
       child: Consumer<DarkThemeProvider>(
           builder: (BuildContext context, value, child) {
         return MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           debugShowCheckedModeBanner: false,
           theme: Styles.themeData(themeChangeProvider.darkTheme, context),
           navigatorObservers: [routeObserver],

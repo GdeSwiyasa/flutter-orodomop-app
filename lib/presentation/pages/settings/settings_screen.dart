@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/common/locale/locale_keys.g.dart';
+import 'package:orodomop_app/presentation/pages/settings/language_setting_screen.dart';
 import 'package:orodomop_app/presentation/pages/settings/theme_settings_screen.dart';
 import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 import 'package:orodomop_app/presentation/widgets/custom_text_button.dart';
@@ -39,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'General',
+              LocaleKeys.general.tr(),
               style: kTitle.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
@@ -47,16 +50,19 @@ class SettingsScreen extends StatelessWidget {
             ),
             CustomTextButton(
                 isSwiched: false,
-                title: 'Language',
+                title: LocaleKeys.language.tr(),
                 subTitle: 'adjust the language according to your needs',
-                onTap: () {}),
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .pushNamed(LanguageSettingScreen.route);
+                }),
             Container(
               color: blackColor.withOpacity(0.1),
               height: 1.0,
             ),
             CustomTextButton(
                 isSwiched: false,
-                title: 'Theme',
+                title: LocaleKeys.theme.tr(),
                 subTitle: 'adjust the theme according to your needs',
                 onTap: () {
                   Navigator.of(context, rootNavigator: true)
@@ -68,7 +74,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             CustomTextButton(
                 isSwiched: false,
-                title: 'Notifications',
+                title: LocaleKeys.notification.tr(),
                 subTitle: 'adjust the notifications according to your needs',
                 onTap: () {}),
             Container(
