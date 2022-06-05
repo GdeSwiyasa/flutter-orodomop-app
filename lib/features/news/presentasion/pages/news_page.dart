@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/features/news/presentasion/providers/news_list_notifier.dart';
 import 'package:orodomop_app/features/news/presentasion/widgets/news_card.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,18 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("News")),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).backgroundColor,
+        centerTitle: true,
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+            'News',
+            style: kHeading5.copyWith(color: Theme.of(context).primaryColor),
+          ),
+        ),
+      ),
       body: Consumer<NewsListNotifier>(builder: (context, data, child) {
         final state = data.state;
         if (state == RequestState.Loading) {

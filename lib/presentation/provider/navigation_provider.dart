@@ -90,6 +90,13 @@ class NavigationProvider extends ChangeNotifier {
       navigatorState: GlobalKey<NavigatorState>(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
+          case NewsWebViewPage.route:
+            final String url = settings.arguments as String;
+            return MaterialPageRoute(builder: (_) => NewsWebViewPage(url: url));
+          case NewsDetailPage.route:
+            final News news = settings.arguments as News;
+            return MaterialPageRoute(
+                builder: (_) => NewsDetailPage(news: news));
           default:
             return MaterialPageRoute(builder: (_) => NewsPage());
         }

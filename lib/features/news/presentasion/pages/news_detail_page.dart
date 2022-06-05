@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orodomop_app/common/constant.dart';
 
 import '../../domain/entities/news.dart';
 import 'news_web_view.dart';
@@ -12,7 +13,16 @@ class NewsDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('News'),
+        backgroundColor: Theme.of(context).backgroundColor,
+        centerTitle: true,
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+            'News',
+            style: kHeading5.copyWith(color: Theme.of(context).primaryColor),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
