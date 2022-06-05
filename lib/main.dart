@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/dark_theme.dart';
 import 'package:orodomop_app/common/utils.dart';
+import 'package:orodomop_app/features/news/presentasion/pages/news_page.dart';
+import 'package:orodomop_app/features/news/presentasion/providers/news_list_notifier.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
 import 'package:orodomop_app/presentation/pages/onboarding_screen.dart';
 import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
@@ -11,6 +13,7 @@ import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'injection.dart' as di;
 
 bool? showHome;
 
@@ -19,7 +22,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   SharedPreferences pref = await SharedPreferences.getInstance();
   showHome = pref.getBool('showHome') ?? false;
-
+  di.init();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('id')],
@@ -59,6 +62,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
         ChangeNotifierProvider(create: (_) => NotesDatabaseProvider()),
         ChangeNotifierProvider(create: (_) => TimerProvider()),
+        ChangeNotifierProvider(create: (_) => di.locator<NewsListNotifier>()),
         ChangeNotifierProvider(create: (_) => themeChangeProvider),
       ],
       child: Consumer<DarkThemeProvider>(

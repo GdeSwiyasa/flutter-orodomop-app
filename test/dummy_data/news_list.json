@@ -1,0 +1,16 @@
+{
+    "status": "ok",
+    "totalResults": 9916,
+    "articles": [
+        {
+          "author": "author",
+          "title": "title",
+          "content": "content",
+          "description": "description",
+          "publishedAt": "publishedAt",
+          "source": {"id": "2", "name": "name"},
+          "url": "url",
+          "urlToImage": "urlToImage"
+        }
+    ]
+}

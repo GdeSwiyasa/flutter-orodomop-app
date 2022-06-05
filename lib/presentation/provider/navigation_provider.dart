@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/data/models/notes.dart';
 import 'package:orodomop_app/domain/entities/screen.dart';
+import 'package:orodomop_app/features/news/domain/entities/news.dart';
+import 'package:orodomop_app/features/news/presentasion/pages/news_detail_page.dart';
+import 'package:orodomop_app/features/news/presentasion/pages/news_page.dart';
+import 'package:orodomop_app/features/news/presentasion/pages/news_web_view.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro_screen.dart';
 
@@ -46,6 +50,14 @@ class NavigationProvider extends ChangeNotifier {
         return MaterialPageRoute(builder: (_) => LanguageSettingScreen());
       case AddNotePage.route:
         return MaterialPageRoute(builder: (_) => AddNotePage());
+      case NewsPage.route:
+        return MaterialPageRoute(builder: (_) => NewsPage());
+      case NewsWebViewPage.route:
+        final String url = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => NewsWebViewPage(url: url));
+      case NewsDetailPage.route:
+        final News news = settings.arguments as News;
+        return MaterialPageRoute(builder: (_) => NewsDetailPage(news: news));
       default:
         return MaterialPageRoute(builder: (_) => MainView());
     }
@@ -73,13 +85,13 @@ class NavigationProvider extends ChangeNotifier {
     newsScreen: Screen(
       title: 'News',
       icon: Icons.newspaper,
-      child: NewsScreen(),
-      initialRoute: NewsScreen.route,
+      child: NewsPage(),
+      initialRoute: NewsPage.route,
       navigatorState: GlobalKey<NavigatorState>(),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           default:
-            return MaterialPageRoute(builder: (_) => NewsScreen());
+            return MaterialPageRoute(builder: (_) => NewsPage());
         }
       },
       scrollController: ScrollController(),
