@@ -1,4 +1,4 @@
-import 'package:orodomop_app/features/news/domain/entities/source.dart';
+import 'package:orodomop_app/domain/entities/source.dart';
 
 class SourceModel extends Source {
   final String? id;

@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:orodomop_app/features/news/data/models/news_model.dart';
-import 'package:orodomop_app/features/news/data/models/news_response.dart';
-import 'package:orodomop_app/features/news/data/models/source_model.dart';
-import 'package:orodomop_app/features/news/domain/entities/news.dart';
-import 'package:orodomop_app/features/news/domain/entities/source.dart';
+import 'package:orodomop_app/data/models/news_model.dart';
+import 'package:orodomop_app/data/models/news_response.dart';
+import 'package:orodomop_app/data/models/source_model.dart';
+import 'package:orodomop_app/domain/entities/news.dart';
+import 'package:orodomop_app/domain/entities/source.dart';
 
 import '../json_reader.dart';
 

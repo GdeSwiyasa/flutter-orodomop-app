@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:orodomop_app/features/news/data/models/news_model.dart';
-import 'package:orodomop_app/features/news/data/models/news_response.dart';
 import 'package:http/http.dart' as http;
+import 'package:orodomop_app/data/models/news_model.dart';
+import 'package:orodomop_app/data/models/news_response.dart';
 
 import '../../../../common/excepsion.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:orodomop_app/common/excepsion.dart';
 import 'package:orodomop_app/common/failure.dart';
-import 'package:orodomop_app/features/news/data/repositorys/news_repository_impl.dart';
+import 'package:orodomop_app/data/repositorys/news_repository_impl.dart';
 
 import '../../../../dummy_data/dummy_data.dart';
 import '../../../../helpers/test_helpers.mocks.dart';

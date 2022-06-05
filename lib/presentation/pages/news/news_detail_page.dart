@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
-import 'package:orodomop_app/features/news/domain/entities/news.dart';
+import 'package:orodomop_app/domain/entities/news.dart';
 
 import 'news_web_view.dart';
 

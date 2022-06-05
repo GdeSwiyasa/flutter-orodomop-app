@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:orodomop_app/features/news/data/models/news_model.dart';
+import 'package:orodomop_app/data/models/news_model.dart';
 
 class NewsResponse extends Equatable {
   final List<NewsModel> newsList;

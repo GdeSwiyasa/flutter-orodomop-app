@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:orodomop_app/features/news/data/data_sources/news_remote_data_source.dart';
-import 'package:orodomop_app/features/news/domain/entities/news.dart';
 import 'package:orodomop_app/common/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:orodomop_app/features/news/domain/repositorys/news_repository.dart';
+import 'package:orodomop_app/data/data_sources/news_remote_data_source.dart';
+import 'package:orodomop_app/domain/entities/news.dart';
+import 'package:orodomop_app/domain/repositorys/news_repository.dart';
 
 import '../../../../common/excepsion.dart';
 

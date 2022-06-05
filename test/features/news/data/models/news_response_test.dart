@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:orodomop_app/features/news/data/models/news_response.dart';
+import 'package:orodomop_app/data/models/news_response.dart';
 
 import '../../../../dummy_data/dummy_data.dart';
 import '../../../../json_reader.dart';

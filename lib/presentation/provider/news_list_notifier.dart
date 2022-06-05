@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/state_enum.dart';
-import 'package:orodomop_app/features/news/domain/entities/news.dart';
-import 'package:orodomop_app/features/news/domain/usecases/get_news.dart';
+import 'package:orodomop_app/domain/entities/news.dart';
+import 'package:orodomop_app/domain/usecases/get_news.dart';
 
 class NewsListNotifier extends ChangeNotifier {
   List<News> _newsList = <News>[];

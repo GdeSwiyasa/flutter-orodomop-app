@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/data/models/notes.dart';
-import 'package:orodomop_app/features/news/domain/entities/screen.dart';
-import 'package:orodomop_app/features/news/domain/entities/news.dart';
+import 'package:orodomop_app/domain/entities/news.dart';
+import 'package:orodomop_app/domain/entities/screen.dart';
+
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
 import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro_screen.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';

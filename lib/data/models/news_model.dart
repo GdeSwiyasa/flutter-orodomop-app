@@ -1,5 +1,5 @@
-import 'package:orodomop_app/features/news/data/models/source_model.dart';
-import 'package:orodomop_app/features/news/domain/entities/news.dart';
+import 'package:orodomop_app/data/models/source_model.dart';
+import 'package:orodomop_app/domain/entities/news.dart';
 
 class NewsModel extends News {
   String? author;

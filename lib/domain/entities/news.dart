@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:orodomop_app/features/news/domain/entities/source.dart';
+import 'package:orodomop_app/domain/entities/source.dart';
 
 class News extends Equatable {
   final String? author;

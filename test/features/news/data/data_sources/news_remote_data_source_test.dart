@@ -3,8 +3,9 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:orodomop_app/common/excepsion.dart';
-import 'package:orodomop_app/features/news/data/data_sources/news_remote_data_source.dart';
+
 import 'package:http/http.dart' as http;
+import 'package:orodomop_app/data/data_sources/news_remote_data_source.dart';
 
 import '../../../../dummy_data/dummy_data.dart';
 import '../../../../helpers/test_helpers.mocks.dart';

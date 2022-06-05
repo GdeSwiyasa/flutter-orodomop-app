@@ -10,12 +10,11 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:http/http.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:orodomop_app/common/failure.dart' as _i6;
-import 'package:orodomop_app/features/news/data/data_sources/news_remote_data_source.dart'
+import 'package:orodomop_app/data/data_sources/news_remote_data_source.dart'
     as _i8;
-import 'package:orodomop_app/features/news/data/models/news_model.dart' as _i9;
-import 'package:orodomop_app/features/news/domain/entities/news.dart' as _i7;
-import 'package:orodomop_app/features/news/domain/repositorys/news_repository.dart'
-    as _i4;
+import 'package:orodomop_app/data/models/news_model.dart' as _i9;
+import 'package:orodomop_app/domain/entities/news.dart' as _i7;
+import 'package:orodomop_app/domain/repositorys/news_repository.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

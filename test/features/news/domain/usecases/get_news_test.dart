@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:orodomop_app/features/news/domain/entities/news.dart';
-import 'package:orodomop_app/features/news/domain/usecases/get_news.dart';
+import 'package:orodomop_app/domain/entities/news.dart';
+import 'package:orodomop_app/domain/usecases/get_news.dart';
 
 import '../../../../helpers/test_helpers.mocks.dart';
 
