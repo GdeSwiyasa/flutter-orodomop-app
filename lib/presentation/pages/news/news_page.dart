@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
-import 'package:orodomop_app/features/news/presentasion/providers/news_list_notifier.dart';
-import 'package:orodomop_app/features/news/presentasion/widgets/news_card.dart';
+import 'package:orodomop_app/presentation/provider/news_list_notifier.dart';
+import 'package:orodomop_app/presentation/widgets/news_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../common/state_enum.dart';

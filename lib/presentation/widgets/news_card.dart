@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/features/news/domain/entities/news.dart';
-import 'package:orodomop_app/features/news/presentasion/pages/news_detail_page.dart';
+import 'package:orodomop_app/presentation/pages/news/news_detail_page.dart';
 
 class NewsCard extends StatelessWidget {
   final News news;

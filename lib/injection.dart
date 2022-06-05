@@ -3,7 +3,7 @@ import 'package:orodomop_app/features/news/data/data_sources/news_remote_data_so
 import 'package:orodomop_app/features/news/data/repositorys/news_repository_impl.dart';
 import 'package:orodomop_app/features/news/domain/repositorys/news_repository.dart';
 import 'package:orodomop_app/features/news/domain/usecases/get_news.dart';
-import 'package:orodomop_app/features/news/presentasion/providers/news_list_notifier.dart';
+import 'package:orodomop_app/presentation/provider/news_list_notifier.dart';
 
 import 'common/ssl_pinning.dart';
 

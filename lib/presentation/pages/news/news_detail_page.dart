@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/constant.dart';
+import 'package:orodomop_app/features/news/domain/entities/news.dart';
 
-import '../../domain/entities/news.dart';
 import 'news_web_view.dart';
 
 class NewsDetailPage extends StatelessWidget {
