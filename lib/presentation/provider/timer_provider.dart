@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TimerProvider extends ChangeNotifier {
@@ -34,29 +33,30 @@ class TimerProvider extends ChangeNotifier {
     _numCycle = value;
   }
 
+  int _breakDurationToMinute = 0;
+  int get breakDurationToMinute => _breakDurationToMinute;
+
+  int _focusDurationToMinute = 0;
+  int get focusDurationToMinute => _focusDurationToMinute;
+
   Future<void> saveData({breakDuration, focusDuration, numCycle}) async {
     prefs = await SharedPreferences.getInstance();
     prefs.setInt('breakDuration', breakDuration);
     prefs.setInt('focusDuration', focusDuration);
     prefs.setInt('numCycle', numCycle);
     notifyListeners();
-
-    // final test = prefs.getInt('breakDuration');
-    // print(test);
   }
 
   Future<void> loadTimer() async {
     prefs = await SharedPreferences.getInstance();
     _breakDuration = prefs.getInt('breakDuration')!;
     _focusDuration = prefs.getInt('focusDuration')!;
+    _breakDurationToMinute = _breakDuration * 60;
+    _focusDurationToMinute = _focusDuration * 60;
     _numCycle = prefs.getInt('numCycle')!;
     _cycle = _numCycle * 2;
     focusStatus = true;
     notifyListeners();
-
-    print('focus: ' + focusDuration.toString());
-    print('break: ' + breakDuration.toString());
-    print('numscycle: ' + numCycle.toString());
   }
 
   int _cycle = 0;

@@ -76,8 +76,8 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
             child: CircularCountDownTimer(
               // Countdown duration in Seconds.
               duration: provider.focusStatus
-                  ? provider.focusDuration
-                  : provider.breakDuration,
+                  ? provider.focusDurationToMinute
+                  : provider.breakDurationToMinute,
 
               // Countdown initial elapsed Duration in Seconds.
               initialDuration: 0,
@@ -149,25 +149,13 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
               onComplete: () {
                 print(provider.focusDuration);
                 // Here, do whatever you want
-
-                // if (!provider.focusStatus) {
-                //   provider.restartTimer(provider.breakDuration);
-                //   provider.focusStatus = false;
-                //   print(provider.focusStatus);
-                // } else {
-                //   provider.restartTimer(provider.focusDuration);
-                //   provider.focusStatus = true;
-                //   print(provider.focusStatus);
-                // }
                 if (provider.cycle > 0) {
                   if (provider.focusStatus) {
                     provider.focusStatus = false;
-                    provider.restartTimer(provider.focusDuration);
-                    print(provider.focusStatus);
+                    provider.restartTimer(provider.focusDurationToMinute);
                   } else {
                     provider.focusStatus = true;
-                    provider.restartTimer(provider.breakDuration);
-                    print(provider.focusStatus);
+                    provider.restartTimer(provider.breakDurationToMinute);
                   }
                 }
               },

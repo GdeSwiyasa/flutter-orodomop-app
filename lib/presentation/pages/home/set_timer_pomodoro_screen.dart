@@ -74,7 +74,7 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                 keyboardType: TextInputType.number,
                                 maxLines: null,
                                 decoration: InputDecoration(
-                                  hintText: 'second',
+                                  hintText: 'Minute',
                                   hintStyle:
                                       kBodyText.copyWith(color: Colors.grey),
                                   focusedBorder: OutlineInputBorder(
@@ -121,7 +121,7 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                 keyboardType: TextInputType.number,
                                 maxLines: null,
                                 decoration: InputDecoration(
-                                  hintText: 'second',
+                                  hintText: 'Minute',
                                   hintStyle:
                                       kBodyText.copyWith(color: Colors.grey),
                                   focusedBorder: OutlineInputBorder(
@@ -169,7 +169,7 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                             maxLines: null,
                             decoration: InputDecoration(
                               hintText:
-                                  'How much do you want to iterate pomodoro',
+                                  'How much time you want to do pomodoro?',
                               hintStyle: kBodyText.copyWith(color: Colors.grey),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
@@ -212,50 +212,13 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                               ),
                             ),
                             onPressed: () async {
-                              // provider.breakDuration =
-                              //     int.parse(_breakTime.text);
-                              // provider.cycle = int.parse(_cycle.text);
-                              // provider.focusDuration =
-                              //     int.parse(_focusTime.text);
-
                               await provider.saveData(
                                   breakDuration: int.parse(_breakTime.text),
                                   focusDuration: int.parse(_focusTime.text),
-                                  numCycle: int.parse(_cycle.text)
-                                  // int.parse(_breakTime.text),
-                                  // int.parse(_cycle.text),
-                                  );
+                                  numCycle: int.parse(_cycle.text));
                               Navigator.of(context, rootNavigator: true)
                                   .pushNamed(HomeScreen.route);
                               Phoenix.rebirth(context);
-
-                              // showDialog<String>(
-                              //   barrierDismissible: false,
-                              //   context: context,
-                              //   builder: (BuildContext context) => AlertDialog(
-                              //     title: const Text('Discard chance'),
-                              //     content: const Text('Sucess Update Data!'),
-                              //     actions: <Widget>[
-                              //       TextButton(
-                              //         onPressed: () {
-                              //           Navigator.pop(context);
-                              //           Navigator.pop(context);
-                              //         },
-                              //         child: const Text(
-                              //           'OK',
-                              //           style: TextStyle(color: kPrimaryColor),
-                              //         ),
-                              //       ),
-                              //     ],
-                              //   ),
-                              // );
-
-                              // Provider.of<TimerProvider>(context, listen: false)
-                              //     .breakDuration;
-                              // Provider.of<TimerProvider>(context, listen: false)
-                              //     .focusDuration;
-                              // Provider.of<TimerProvider>(context, listen: false)
-                              //     .cycle;
                             },
                           ),
                         ),
