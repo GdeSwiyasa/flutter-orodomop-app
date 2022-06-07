@@ -1,0 +1,19 @@
+{
+  "general": "Umum",
+  "language": "Bahasa",
+  "theme": "Tema",
+  "notification": "Notifikasi",
+  "language_args": "Sesuaikan Bahasa",
+  "theme_args": "Sesuaikan tema",
+  "notifications_args": "Sesuaikan notifikasi",
+  "select_language": "Pilih bahasa",
+  "select_language_args": "Pilih bahasa yang Anda butuhkan",
+  "change_theme": "Ubah tema",
+  "change_theme_args": "Ubah tema untuk aplikasi ini",
+  "note_empty": "Anda belum membuat catatan apa pun",
+  "note_subject": "Tambahkan subjek",
+  "note_todo": "Tambahkan apa yang harus anda lakukan",
+  "note": "Catatan",
+  "note_msg": "Subject kosong",
+  "note_msg_content":"Anda harus mengisi nama subjek"
+}

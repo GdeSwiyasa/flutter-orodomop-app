@@ -1,0 +1,19 @@
+{
+  "general": "General",
+  "language": "Language",
+  "theme": "Theme",
+  "notification": "Notifications",
+  "language_args": "Adjust the language",
+  "theme_args": "Adjust the theme",
+  "notifications_args": "Adjust the notifications",
+  "select_language": "Select language",
+  "select_language_args": "Select language do you need",
+  "change_theme": "Change theme",
+  "change_theme_args": "Change theme for this app",
+  "note_empty": "You have not made any notes yet",
+  "note_subject": "Add subject",
+  "note_todo": "Add what you supposed to do",
+  "note": "Note",
+  "note_msg": "Subject is empty",
+  "note_msg_content":"You have to fill in the subject name"
+}
