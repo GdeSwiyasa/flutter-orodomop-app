@@ -1,28 +1,28 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:orodomop_app/domain/usecases/get_news_detail.dart';
+import 'package:orodomop_app/domain/usecases/search_news.dart';
 
 import '../../../../dummy_data/dummy_data.dart';
 import '../../../../helpers/test_helpers.mocks.dart';
 
 void main() {
   late MockNewsRepository repository;
-  late GetNewsDetail usecase;
+  late SearchNews usecase;
 
   setUp(() {
     repository = MockNewsRepository();
-    usecase = GetNewsDetail(repository);
+    usecase = SearchNews(repository);
   });
 
   group("GetNewsDetail test", () {
     test("should get NewsDetail from the repository", () async {
-      when(usecase.execute(testId))
-          .thenAnswer((_) async => const Right(testNews));
+      when(usecase.execute(testQuery))
+          .thenAnswer((_) async => Right(testListNews));
 
-      final result = await usecase.execute(testId);
+      final result = await usecase.execute(testQuery);
 
-      expect(result, const Right(testNews));
+      expect(result, Right(testListNews));
     });
   });
 }

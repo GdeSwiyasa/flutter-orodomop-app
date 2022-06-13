@@ -13,6 +13,7 @@ import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'injection.dart' as di;
+import 'presentation/provider/search_news_list_notifier.dart';
 
 bool? showHome;
 
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => NotesDatabaseProvider()),
         ChangeNotifierProvider(create: (_) => TimerProvider()),
         ChangeNotifierProvider(create: (_) => di.locator<NewsListNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<SearchNewsListNotifier>()),
         ChangeNotifierProvider(create: (_) => themeChangeProvider),
       ],
       child: Consumer<DarkThemeProvider>(
@@ -74,7 +76,7 @@ class _MyAppState extends State<MyApp> {
           theme: Styles.themeData(themeChangeProvider.darkTheme, context),
           navigatorObservers: [routeObserver],
           onGenerateRoute: NavigationProvider.of(context).onGenerateRoute,
-          home: showHome == true ? MainView() : OnBoardingScreen(),
+          home: showHome == true ? const MainView() : const OnBoardingScreen(),
         );
       }),
     );

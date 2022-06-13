@@ -46,5 +46,9 @@ final testNewsList =
 
 const testId = 1;
 
+const testQuery = 'mentri';
+
+const testCountry = 'id';
+
 String jsonString(String name) =>
     File("test/dummy_data/$name").readAsStringSync();

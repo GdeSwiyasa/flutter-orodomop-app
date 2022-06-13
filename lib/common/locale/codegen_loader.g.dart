@@ -31,7 +31,8 @@ class CodegenLoader extends AssetLoader {
     "note_todo": "Add what you supposed to do",
     "note": "Note",
     "note_msg": "Subject is empty",
-    "note_msg_content": "You have to fill in the subject name"
+    "note_msg_content": "You have to fill in the subject name",
+    "locale": "us"
   };
   static const Map<String, dynamic> id = {
     "general": "Umum",
@@ -50,7 +51,8 @@ class CodegenLoader extends AssetLoader {
     "note_todo": "Tambahkan apa yang harus anda lakukan",
     "note": "Catatan",
     "note_msg": "Subject kosong",
-    "note_msg_content": "Anda harus mengisi nama subjek"
+    "note_msg_content": "Anda harus mengisi nama subjek",
+    "locale": "id"
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "en": en,

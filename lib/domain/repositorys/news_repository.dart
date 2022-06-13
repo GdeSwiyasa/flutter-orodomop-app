@@ -4,5 +4,5 @@ import 'package:orodomop_app/domain/entities/news.dart';
 
 abstract class NewsRepository {
   Future<Either<Failure, List<News>>> getNews();
-  Future<Either<Failure, News>> getNewsDetail(int id);
+  Future<Either<Failure, List<News>>> searchNews(String query);
 }

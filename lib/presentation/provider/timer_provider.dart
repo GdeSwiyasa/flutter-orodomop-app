@@ -49,11 +49,11 @@ class TimerProvider extends ChangeNotifier {
 
   Future<void> loadTimer() async {
     prefs = await SharedPreferences.getInstance();
-    _breakDuration = prefs.getInt('breakDuration')!;
-    _focusDuration = prefs.getInt('focusDuration')!;
+    _breakDuration = prefs.getInt('breakDuration') ?? 2;
+    _focusDuration = prefs.getInt('focusDuration') ?? 2;
     _breakDurationToMinute = _breakDuration * 60;
     _focusDurationToMinute = _focusDuration * 60;
-    _numCycle = prefs.getInt('numCycle')!;
+    _numCycle = prefs.getInt('numCycle') ?? 2;
     _cycle = _numCycle * 2;
     focusStatus = true;
     notifyListeners();

@@ -3,12 +3,12 @@ import 'package:orodomop_app/common/failure.dart';
 import 'package:orodomop_app/domain/entities/news.dart';
 import 'package:orodomop_app/domain/repositorys/news_repository.dart';
 
-class GetNewsDetail {
+class SearchNews {
   final NewsRepository repository;
 
-  GetNewsDetail(this.repository);
+  SearchNews(this.repository);
 
-  Future<Either<Failure, News>> execute(int id) {
-    return repository.getNewsDetail(id);
+  Future<Either<Failure, List<News>>> execute(String query) {
+    return repository.searchNews(query);
   }
 }

@@ -3,7 +3,9 @@ import 'package:orodomop_app/data/data_sources/news_remote_data_source.dart';
 import 'package:orodomop_app/data/repositorys/news_repository_impl.dart';
 import 'package:orodomop_app/domain/repositorys/news_repository.dart';
 import 'package:orodomop_app/domain/usecases/get_news.dart';
+import 'package:orodomop_app/domain/usecases/search_news.dart';
 import 'package:orodomop_app/presentation/provider/news_list_notifier.dart';
+import 'package:orodomop_app/presentation/provider/search_news_list_notifier.dart';
 
 import 'common/ssl_pinning.dart';
 
@@ -17,8 +19,15 @@ void init() {
     ),
   );
 
+  locator.registerFactory(
+    () => SearchNewsListNotifier(
+      usecase: locator(),
+    ),
+  );
+
   // use case
   locator.registerLazySingleton(() => GetNews(locator()));
+  locator.registerLazySingleton(() => SearchNews(locator()));
 
   // repository
   locator.registerLazySingleton<NewsRepository>(

@@ -48,11 +48,12 @@ class MockNewsRepository extends _i1.Mock implements _i4.NewsRepository {
               _FakeEither_0<_i6.Failure, List<_i7.News>>())) as _i5
           .Future<_i2.Either<_i6.Failure, List<_i7.News>>>);
   @override
-  _i5.Future<_i2.Either<_i6.Failure, _i7.News>> getNewsDetail(int? id) =>
-      (super.noSuchMethod(Invocation.method(#getNewsDetail, [id]),
-              returnValue: Future<_i2.Either<_i6.Failure, _i7.News>>.value(
-                  _FakeEither_0<_i6.Failure, _i7.News>()))
-          as _i5.Future<_i2.Either<_i6.Failure, _i7.News>>);
+  _i5.Future<_i2.Either<_i6.Failure, List<_i7.News>>> searchNews(
+          String? query) =>
+      (super.noSuchMethod(Invocation.method(#searchNews, [query]),
+          returnValue: Future<_i2.Either<_i6.Failure, List<_i7.News>>>.value(
+              _FakeEither_0<_i6.Failure, List<_i7.News>>())) as _i5
+          .Future<_i2.Either<_i6.Failure, List<_i7.News>>>);
 }
 
 /// A class which mocks [NewsRemoteDataSource].
@@ -65,8 +66,13 @@ class MockNewsRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i5.Future<List<_i9.NewsModel>> getNews() =>
-      (super.noSuchMethod(Invocation.method(#getNews, []),
+  _i5.Future<List<_i9.NewsModel>> getNews(String? country) =>
+      (super.noSuchMethod(Invocation.method(#getNews, [country]),
+              returnValue: Future<List<_i9.NewsModel>>.value(<_i9.NewsModel>[]))
+          as _i5.Future<List<_i9.NewsModel>>);
+  @override
+  _i5.Future<List<_i9.NewsModel>> searchNews(String? query, String? country) =>
+      (super.noSuchMethod(Invocation.method(#searchNews, [query, country]),
               returnValue: Future<List<_i9.NewsModel>>.value(<_i9.NewsModel>[]))
           as _i5.Future<List<_i9.NewsModel>>);
 }

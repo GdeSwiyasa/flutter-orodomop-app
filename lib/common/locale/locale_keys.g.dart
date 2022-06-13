@@ -18,4 +18,5 @@ abstract class LocaleKeys {
   static const note = 'note';
   static const note_msg = 'note_msg';
   static const note_msg_content = 'note_msg_content';
+  static const locale = 'locale';
 }

@@ -19,14 +19,14 @@ void main() {
     repository = NewsRepositoryImpl(remoteDataSource: mockRemoteDataSource);
   });
 
-  group("getNews test", () {
+  group("searchNews test", () {
     test(
         "should return remote data when the call to remote data source is successful",
         () async {
-      when(mockRemoteDataSource.getNews())
+      when(mockRemoteDataSource.searchNews(testQuery, "locale"))
           .thenAnswer((_) async => testListNewsModel);
-      final result = await repository.getNews();
-      verify(mockRemoteDataSource.getNews());
+      final result = await repository.searchNews(testQuery);
+      verify(mockRemoteDataSource.searchNews(testQuery, "locale"));
       final resultList = result.getOrElse(() => []);
       expect(resultList, testListNews);
     });
@@ -35,11 +35,11 @@ void main() {
         'should return server failure when the call to remote data source is unsuccessful',
         () async {
       // arrange
-      when(mockRemoteDataSource.getNews()).thenThrow(ServerException());
+      when(mockRemoteDataSource.searchNews(testQuery, "locale")).thenThrow(ServerException());
       // act
-      final result = await repository.getNews();
+      final result = await repository.searchNews(testQuery);
       // assert
-      verify(mockRemoteDataSource.getNews());
+      verify(mockRemoteDataSource.searchNews(testQuery, "locale"));
       expect(result, equals(const Left(ServerFailure(''))));
     });
 
@@ -47,12 +47,53 @@ void main() {
         'should return connection failure when the device is not connected to internet',
         () async {
       // arrange
-      when(mockRemoteDataSource.getNews())
+      when(mockRemoteDataSource.searchNews(testQuery, "locale"))
+          .thenThrow(const SocketException('Failed to connect to the network'));
+      // act
+      final result = await repository.searchNews(testQuery);
+      // assert
+      verify(mockRemoteDataSource.searchNews(testQuery, "locale"));
+      expect(
+          result,
+          equals(const Left(
+              ConnectionFailure('Failed to connect to the network'))));
+    });
+  });
+
+  group("getNews test", () {
+    test(
+        "should return remote data when the call to remote data source is successful",
+        () async {
+      when(mockRemoteDataSource.getNews("locale"))
+          .thenAnswer((_) async => testListNewsModel);
+      final result = await repository.getNews();
+      verify(mockRemoteDataSource.getNews("locale"));
+      final resultList = result.getOrElse(() => []);
+      expect(resultList, testListNews);
+    });
+
+    test(
+        'should return server failure when the call to remote data source is unsuccessful',
+        () async {
+      // arrange
+      when(mockRemoteDataSource.getNews("locale")).thenThrow(ServerException());
+      // act
+      final result = await repository.getNews();
+      // assert
+      verify(mockRemoteDataSource.getNews("locale"));
+      expect(result, equals(const Left(ServerFailure(''))));
+    });
+
+    test(
+        'should return connection failure when the device is not connected to internet',
+        () async {
+      // arrange
+      when(mockRemoteDataSource.getNews("locale"))
           .thenThrow(const SocketException('Failed to connect to the network'));
       // act
       final result = await repository.getNews();
       // assert
-      verify(mockRemoteDataSource.getNews());
+      verify(mockRemoteDataSource.getNews("locale"));
       expect(
           result,
           equals(const Left(

@@ -8,6 +8,7 @@ import 'package:orodomop_app/presentation/pages/home/set_timer_pomodoro_screen.d
 import 'package:orodomop_app/presentation/pages/main_view.dart';
 import 'package:orodomop_app/presentation/pages/news/news_detail_page.dart';
 import 'package:orodomop_app/presentation/pages/news/news_page.dart';
+import 'package:orodomop_app/presentation/pages/news/news_search_page.dart';
 import 'package:orodomop_app/presentation/pages/news/news_web_view.dart';
 import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/edit_note_page.dart';
@@ -54,6 +55,8 @@ class NavigationProvider extends ChangeNotifier {
       case NewsWebViewPage.route:
         final String url = settings.arguments as String;
         return MaterialPageRoute(builder: (_) => NewsWebViewPage(url: url));
+      case NewsSearchPage.route:
+        return MaterialPageRoute(builder: (_) => const NewsSearchPage());
       case NewsDetailPage.route:
         final News news = settings.arguments as News;
         return MaterialPageRoute(builder: (_) => NewsDetailPage(news: news));
@@ -96,6 +99,8 @@ class NavigationProvider extends ChangeNotifier {
             final News news = settings.arguments as News;
             return MaterialPageRoute(
                 builder: (_) => NewsDetailPage(news: news));
+          case NewsSearchPage.route:
+            return MaterialPageRoute(builder: (_) => const NewsSearchPage());
           default:
             return MaterialPageRoute(builder: (_) => NewsPage());
         }
