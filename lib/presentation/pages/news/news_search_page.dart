@@ -17,13 +17,6 @@ class NewsSearchPage extends StatefulWidget {
 
 class _NewsSearchPageState extends State<NewsSearchPage> {
   @override
-  void initState() {
-    super.initState();
-    Future.microtask(() =>
-        Provider.of<NewsListNotifier>(context, listen: false)..fetchGetNews());
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -41,54 +34,57 @@ class _NewsSearchPageState extends State<NewsSearchPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextField(
-                onChanged: (query) {
-                  if (query == '') {
-                    query = 'a';
-                  }
-                  Future.microtask(() =>
-                    Provider.of<SearchNewsListNotifier>(context, listen: false)..fetchSearchNews(query));
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Search title',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(),
-                ),
-                textInputAction: TextInputAction.search,
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Search Result',
-                style: kHeading6,
-              ),
-              Consumer<SearchNewsListNotifier>(builder: (context, data, child) {
-                final state = data.state;
-                if (state == RequestState.Loading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state == RequestState.Loaded) {
-                  return Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: data.newsList.length,
-                      itemBuilder: (context, index) {
-                        var news = data.newsList[index];
-                        return NewsCard(
-                          news: news,
-                        );
-                      },
-                    ),
-                  );
-                } else {
-                  return const Text('Failed');
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextField(
+              onChanged: (query) {
+                if (query == '') {
+                  query = 'a';
                 }
-              }),
-            ],
-          ),
+                Future.microtask(() =>
+                    Provider.of<SearchNewsListNotifier>(context, listen: false)
+                      ..fetchSearchNews(query));
+              },
+              decoration: const InputDecoration(
+                hintText: 'Search title',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
+              textInputAction: TextInputAction.search,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Search Result',
+              style: kHeading6,
+            ),
+            Consumer<SearchNewsListNotifier>(builder: (context, data, child) {
+              final state = data.state;
+              if (state == RequestState.Loading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state == RequestState.Loaded) {
+                return Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: data.newsList.length,
+                    itemBuilder: (context, index) {
+                      var news = data.newsList[index];
+                      return NewsCard(
+                        news: news,
+                      );
+                    },
+                  ),
+                );
+              } else if (state == RequestState.Error) {
+                return Center(child: Text(data.message));
+              } else {
+                return const Center(child: Text('Empty'));
+              }
+            }),
+          ],
         ),
+      ),
     );
   }
 }

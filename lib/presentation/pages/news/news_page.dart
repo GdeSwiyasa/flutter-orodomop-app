@@ -31,9 +31,11 @@ class _NewsPageState extends State<NewsPage> {
         centerTitle: true,
         elevation: 0,
         actions: [
-          IconButton(onPressed: (){
-            Navigator.pushNamed(context, NewsSearchPage.route);
-          }, icon: const Icon(Icons.search))
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, NewsSearchPage.route);
+              },
+              icon: const Icon(Icons.search))
         ],
         title: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -60,8 +62,10 @@ class _NewsPageState extends State<NewsPage> {
               );
             },
           );
-        }else {
-          return const Center(child: Text('No internet Connection'));
+        } else if (state == RequestState.Error) {
+          return Center(child: Text(data.message));
+        } else {
+          return const Center(child: Text("Empty"));
         }
       }),
     );

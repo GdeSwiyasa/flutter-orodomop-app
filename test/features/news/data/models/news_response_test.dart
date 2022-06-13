@@ -43,8 +43,10 @@ void main() {
                 "description": "description",
                 "publishedAt": "publishedAt",
                 "source": {"id": "2", "name": "name"},
-                "url": "url",
-                "urlToImage": "urlToImage",
+                "url":
+                    "https://www.nytimes.com/live/2022/06/12/theater/tony-awards",
+                "urlToImage":
+                    "https://asset.kompas.com/crops/_Yhb9i0KoAf41TNs_ucSWowWZd0=/0x0:0x0/780x390/filters:watermark(data/photo/2020/03/10/5e6775b55942a.png,0,-0,1)/data/photo/2022/06/12/62a5d0698431e.jpg",
               }
             ],
           };

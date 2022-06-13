@@ -38,26 +38,31 @@ class NewsDetailPage extends StatelessWidget {
                 children: [
                   Text(
                     news.description ?? "-",
+                    key: const Key("description"),
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                   const Divider(color: Colors.grey),
                   Text(
                     news.title!,
+                    key: const Key("title"),
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   const Divider(color: Colors.grey),
                   Text(
                     'Date: ${news.publishedAt}',
+                    key: const Key("date"),
                     style: Theme.of(context).textTheme.caption,
                   ),
                   const SizedBox(height: 10),
                   Text(
                     'Author: ${news.author}',
+                    key: const Key("author"),
                     style: Theme.of(context).textTheme.caption,
                   ),
                   const Divider(color: Colors.grey),
                   Text(
                     news.content ?? "-",
+                    key: const Key("content"),
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   const SizedBox(height: 10),

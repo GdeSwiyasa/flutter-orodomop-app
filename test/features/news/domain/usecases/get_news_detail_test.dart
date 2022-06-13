@@ -15,8 +15,8 @@ void main() {
     usecase = SearchNews(repository);
   });
 
-  group("GetNewsDetail test", () {
-    test("should get NewsDetail from the repository", () async {
+  group("GetSearchNews test", () {
+    test("should get Search News from the repository", () async {
       when(usecase.execute(testQuery))
           .thenAnswer((_) async => Right(testListNews));
 
