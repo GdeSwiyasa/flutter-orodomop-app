@@ -4,16 +4,25 @@ import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/common/locale/locale_keys.g.dart';
 import 'package:orodomop_app/presentation/pages/note/add_note_page.dart';
 import 'package:orodomop_app/presentation/pages/note/edit_note_page.dart';
+import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 
-class NoteScreen extends StatelessWidget {
+class NoteScreen extends StatefulWidget {
   static const route = '/note_screen';
 
   const NoteScreen({Key? key}) : super(key: key);
+
+  @override
+  State<NoteScreen> createState() => _NoteScreenState();
+}
+
+class _NoteScreenState extends State<NoteScreen> {
   @override
   Widget build(BuildContext context) {
+    bool isDark = Provider.of<DarkThemeProvider>(context).darkTheme;
+
     return Scaffold(
       appBar: buildAppBar(
         title: 'Note',
@@ -29,7 +38,11 @@ class NoteScreen extends StatelessWidget {
                 return Card(
                   child: Container(
                     decoration: BoxDecoration(
-                        border: Border.all(),
+                        border: Border.all(
+                          color: isDark
+                              ? Colors.grey.withOpacity(0.4)
+                              : blackColor,
+                        ),
                         borderRadius: BorderRadius.circular(15)),
                     padding: const EdgeInsets.only(
                         top: 8, right: 24, left: 24, bottom: 8),
@@ -39,7 +52,6 @@ class NoteScreen extends StatelessWidget {
                         Text(notes.title),
                         IconButton(
                           onPressed: () async {
-                            print(db.notes.length);
                             final selectedNote =
                                 await db.getNoteById(notes.id!);
                             Navigator.of(context, rootNavigator: true)

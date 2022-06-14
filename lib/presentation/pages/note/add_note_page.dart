@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:orodomop_app/common/locale/locale_keys.g.dart';
 import 'package:orodomop_app/data/models/notes.dart';
+import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
 import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,8 @@ class _AddNotePageState extends State<AddNotePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Provider.of<DarkThemeProvider>(context).darkTheme;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -104,11 +107,17 @@ class _AddNotePageState extends State<AddNotePage> {
                   hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(color: blackColor, width: 1),
+                    borderSide: BorderSide(
+                      color: isDark ? Colors.grey.withOpacity(0.4) : blackColor,
+                      width: 1,
+                    ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(color: blackColor, width: 1),
+                    borderSide: BorderSide(
+                      color: isDark ? Colors.grey.withOpacity(0.4) : blackColor,
+                      width: 1,
+                    ),
                   ),
                 ),
               ),
@@ -128,11 +137,17 @@ class _AddNotePageState extends State<AddNotePage> {
                   hintStyle: kBodyText.copyWith(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(color: blackColor, width: 1),
+                    borderSide: BorderSide(
+                      color: isDark ? Colors.grey.withOpacity(0.4) : blackColor,
+                      width: 1,
+                    ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(color: blackColor, width: 1),
+                    borderSide: BorderSide(
+                      color: isDark ? Colors.grey.withOpacity(0.4) : blackColor,
+                      width: 1,
+                    ),
                   ),
                 ),
               )
