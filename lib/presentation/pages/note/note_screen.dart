@@ -86,7 +86,10 @@ class _NoteScreenState extends State<NoteScreen> {
           Navigator.of(context, rootNavigator: true)
               .pushNamed(AddNotePage.route);
         },
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: whiteColor,
+        ),
         backgroundColor: kPrimaryColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

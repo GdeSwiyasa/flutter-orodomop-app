@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/constant.dart';
 import 'package:orodomop_app/presentation/pages/home/home_screen.dart';
+import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,8 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Provider.of<DarkThemeProvider>(context).darkTheme;
+
     return Scaffold(
       appBar: buildAppBar(
         appBar: AppBar(),
@@ -84,8 +87,12 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
-                                    borderSide: const BorderSide(
-                                        color: blackColor, width: 1),
+                                    borderSide: BorderSide(
+                                      color: isDark
+                                          ? Colors.grey.withOpacity(0.4)
+                                          : blackColor,
+                                      width: 1,
+                                    ),
                                   ),
                                   prefixIcon: Icon(
                                     Icons.access_time,
@@ -131,8 +138,12 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
-                                    borderSide: const BorderSide(
-                                        color: blackColor, width: 1),
+                                    borderSide: BorderSide(
+                                      color: isDark
+                                          ? Colors.grey.withOpacity(0.4)
+                                          : blackColor,
+                                      width: 1,
+                                    ),
                                   ),
                                   prefixIcon: Icon(
                                     Icons.access_time,
@@ -178,8 +189,12 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
-                                borderSide: const BorderSide(
-                                    color: blackColor, width: 1),
+                                borderSide: BorderSide(
+                                  color: isDark
+                                      ? Colors.grey.withOpacity(0.4)
+                                      : blackColor,
+                                  width: 1,
+                                ),
                               ),
                             ),
                           ),
@@ -222,6 +237,9 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                             },
                           ),
                         ),
+                        const SizedBox(
+                          height: 16,
+                        ),
                         SizedBox(
                           width: 237,
                           height: 40,
@@ -230,17 +248,17 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                               'Discard',
                               style: kSubtitle.copyWith(
                                 fontWeight: FontWeight.bold,
-                                color: blackColor,
+                                color: isDark ? whiteColor : blackColor,
                               ),
                             ),
                             style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(whiteColor),
+                              backgroundColor: MaterialStateProperty.all(
+                                  whiteColor.withOpacity(0)),
                               elevation: MaterialStateProperty.all(0),
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
                               ),
                             ),
@@ -275,6 +293,9 @@ class _SetTimerPomodoroScreenState extends State<SetTimerPomodoroScreen> {
                             // onPressed: () =>
                             //     Navigator.pushNamed(context, HomeScreen.route),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 16,
                         ),
                       ],
                     ),
