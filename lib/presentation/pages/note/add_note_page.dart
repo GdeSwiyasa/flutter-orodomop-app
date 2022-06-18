@@ -55,7 +55,6 @@ class _AddNotePageState extends State<AddNotePage> {
                 Provider.of<NotesDatabaseProvider>(context, listen: false)
                     .insertNote(notes);
                 Navigator.pop(context);
-
                 final msg =
                     Provider.of<NotesDatabaseProvider>(context, listen: false)
                         .noteMsg;
@@ -63,7 +62,7 @@ class _AddNotePageState extends State<AddNotePage> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(msg),
-                    duration: Duration(seconds: 2),
+                    duration: const Duration(seconds: 2),
                     behavior: SnackBarBehavior.floating,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
