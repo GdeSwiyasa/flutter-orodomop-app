@@ -16,7 +16,7 @@ void main() {
     timerProvider = TimerProvider();
   });
 
-  group('Save Data Test', () async {
+  group('Save Data Test', () {
     test('Save Data Test', () async {
       when(timerProvider.breakDuration).thenReturn(1);
       when(timerProvider.focusDuration).thenReturn(1);
