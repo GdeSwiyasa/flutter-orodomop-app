@@ -45,6 +45,7 @@ dependencies:
   equatable: ^2.0.3
   firebase_core: ^1.17.0
   firebase_crashlytics: ^2.8.1
+  audioplayers: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -60,6 +61,7 @@ flutter:
     - assets/
     - assets/translations/
     - certificates/newsCertificates.cer
+    - assets/sound/alarm.wav
 dev_dependencies: 
   flutter_lints: ^1.0.4
   mockito: ^5.0.8

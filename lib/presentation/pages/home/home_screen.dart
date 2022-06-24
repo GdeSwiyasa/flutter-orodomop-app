@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -48,6 +49,7 @@ class PomodoroTimer extends StatefulWidget {
   PomodoroTimer({Key? key, this.title}) : super(key: key);
 
   final String? title;
+  final AudioPlayer player = AudioPlayer();
 
   @override
   State<PomodoroTimer> createState() => _PomodoroTimerState();
@@ -138,11 +140,12 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
               autoStart: true,
 
               // This Callback will execute when the Countdown Starts.
-              onStart: () {
+              onStart: () async {
                 // Here, do whatever you want11
 
                 print(provider.cycle);
                 provider.cycle--;
+                await widget.player.play(AssetSource('sound/alarm.wav'));
               },
 
               // This Callback will execute when the Countdown Ends.
