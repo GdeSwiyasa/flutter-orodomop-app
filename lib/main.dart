@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/dark_theme.dart';
 import 'package:orodomop_app/common/utils.dart';
-import 'package:orodomop_app/presentation/provider/news_list_notifier.dart';
+import 'package:orodomop_app/presentation/provider/quote_list_notifier.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
 import 'package:orodomop_app/presentation/pages/onboarding_screen.dart';
 import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
@@ -14,7 +14,6 @@ import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'injection.dart' as di;
-import 'presentation/provider/search_news_list_notifier.dart';
 
 bool? showHome;
 
@@ -44,7 +43,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  DarkThemeProvider themeChangeProvider = new DarkThemeProvider();
+  DarkThemeProvider themeChangeProvider = di.locator<DarkThemeProvider>();
 
   @override
   void initState() {
@@ -61,12 +60,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => NavigationProvider()),
-        ChangeNotifierProvider(create: (_) => NotesDatabaseProvider()),
-        ChangeNotifierProvider(create: (_) => TimerProvider()),
-        ChangeNotifierProvider(create: (_) => di.locator<NewsListNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<NavigationProvider>()),
         ChangeNotifierProvider(
-            create: (_) => di.locator<SearchNewsListNotifier>()),
+            create: (_) => di.locator<NotesDatabaseProvider>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TimerProvider>()),
+        ChangeNotifierProvider(create: (_) => di.locator<QuoteListNotifier>()),
         ChangeNotifierProvider(create: (_) => themeChangeProvider),
       ],
       child: Consumer<DarkThemeProvider>(

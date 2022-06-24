@@ -1,44 +1,55 @@
 import 'package:get_it/get_it.dart';
-import 'package:orodomop_app/data/data_sources/news_remote_data_source.dart';
-import 'package:orodomop_app/data/repositorys/news_repository_impl.dart';
-import 'package:orodomop_app/domain/repositorys/news_repository.dart';
-import 'package:orodomop_app/domain/usecases/get_news.dart';
-import 'package:orodomop_app/domain/usecases/search_news.dart';
-import 'package:orodomop_app/presentation/provider/news_list_notifier.dart';
-import 'package:orodomop_app/presentation/provider/search_news_list_notifier.dart';
+import 'package:orodomop_app/data/data_sources/quote_remote_data_source.dart';
+import 'package:orodomop_app/domain/usecases/get_quote.dart';
+import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
+import 'package:orodomop_app/presentation/provider/navigation_provider.dart';
+import 'package:orodomop_app/presentation/provider/quote_list_notifier.dart';
+import 'package:orodomop_app/presentation/provider/notes_db_provider.dart';
+import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 
 import 'common/ssl_pinning.dart';
+import 'data/repositorys/quote_repository_impl.dart';
+import 'domain/repositorys/quote_repository.dart';
 
 final locator = GetIt.instance;
 
 void init() {
   // provider
   locator.registerFactory(
-    () => NewsListNotifier(
-      getNews: locator(),
+    () => QuoteListNotifier(
+      getQuote: locator(),
     ),
   );
 
   locator.registerFactory(
-    () => SearchNewsListNotifier(
-      usecase: locator(),
-    ),
+    () => TimerProvider(),
+  );
+
+  locator.registerFactory(
+    () => NotesDatabaseProvider(),
+  );
+
+  locator.registerFactory(
+    () => NavigationProvider(),
+  );
+
+  locator.registerFactory(
+    () => DarkThemeProvider(),
   );
 
   // use case
-  locator.registerLazySingleton(() => GetNews(locator()));
-  locator.registerLazySingleton(() => SearchNews(locator()));
+  locator.registerLazySingleton(() => GetQuote(locator()));
 
   // repository
-  locator.registerLazySingleton<NewsRepository>(
-    () => NewsRepositoryImpl(
+  locator.registerLazySingleton<QuoteRepository>(
+    () => QuoteRepositoryImpl(
       remoteDataSource: locator(),
     ),
   );
 
   // data sources
-  locator.registerLazySingleton<NewsRemoteDataSource>(
-      () => NewsRemoteDataSourceImpl(client: locator()));
+  locator.registerLazySingleton<QuoteRemoteDataSource>(
+      () => QuoteRemoteDataSourceImpl(client: locator()));
 
   // external
   locator.registerLazySingleton(() => HttpSSLPinning.client);

@@ -10,11 +10,11 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:http/http.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:orodomop_app/common/failure.dart' as _i6;
-import 'package:orodomop_app/data/data_sources/news_remote_data_source.dart'
+import 'package:orodomop_app/data/data_sources/quote_remote_data_source.dart'
     as _i8;
-import 'package:orodomop_app/data/models/news_model.dart' as _i9;
-import 'package:orodomop_app/domain/entities/news.dart' as _i7;
-import 'package:orodomop_app/domain/repositorys/news_repository.dart' as _i4;
+import 'package:orodomop_app/data/models/quote_model.dart' as _i9;
+import 'package:orodomop_app/domain/entities/quote.dart' as _i7;
+import 'package:orodomop_app/domain/repositorys/quote_repository.dart' as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -33,48 +33,36 @@ class _FakeResponse_1 extends _i1.Fake implements _i3.Response {}
 class _FakeStreamedResponse_2 extends _i1.Fake implements _i3.StreamedResponse {
 }
 
-/// A class which mocks [NewsRepository].
+/// A class which mocks [QuoteRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNewsRepository extends _i1.Mock implements _i4.NewsRepository {
-  MockNewsRepository() {
+class MockQuoteRepository extends _i1.Mock implements _i4.QuoteRepository {
+  MockQuoteRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.Either<_i6.Failure, List<_i7.News>>> getNews() =>
-      (super.noSuchMethod(Invocation.method(#getNews, []),
-          returnValue: Future<_i2.Either<_i6.Failure, List<_i7.News>>>.value(
-              _FakeEither_0<_i6.Failure, List<_i7.News>>())) as _i5
-          .Future<_i2.Either<_i6.Failure, List<_i7.News>>>);
-  @override
-  _i5.Future<_i2.Either<_i6.Failure, List<_i7.News>>> searchNews(
-          String? query) =>
-      (super.noSuchMethod(Invocation.method(#searchNews, [query]),
-          returnValue: Future<_i2.Either<_i6.Failure, List<_i7.News>>>.value(
-              _FakeEither_0<_i6.Failure, List<_i7.News>>())) as _i5
-          .Future<_i2.Either<_i6.Failure, List<_i7.News>>>);
+  _i5.Future<_i2.Either<_i6.Failure, List<_i7.Quote>>> getQuote() =>
+      (super.noSuchMethod(Invocation.method(#getQuote, []),
+          returnValue: Future<_i2.Either<_i6.Failure, List<_i7.Quote>>>.value(
+              _FakeEither_0<_i6.Failure, List<_i7.Quote>>())) as _i5
+          .Future<_i2.Either<_i6.Failure, List<_i7.Quote>>>);
 }
 
-/// A class which mocks [NewsRemoteDataSource].
+/// A class which mocks [QuoteRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNewsRemoteDataSource extends _i1.Mock
-    implements _i8.NewsRemoteDataSource {
-  MockNewsRemoteDataSource() {
+class MockQuoteRemoteDataSource extends _i1.Mock
+    implements _i8.QuoteRemoteDataSource {
+  MockQuoteRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<List<_i9.NewsModel>> getNews(String? country) =>
-      (super.noSuchMethod(Invocation.method(#getNews, [country]),
-              returnValue: Future<List<_i9.NewsModel>>.value(<_i9.NewsModel>[]))
-          as _i5.Future<List<_i9.NewsModel>>);
-  @override
-  _i5.Future<List<_i9.NewsModel>> searchNews(String? query, String? country) =>
-      (super.noSuchMethod(Invocation.method(#searchNews, [query, country]),
-              returnValue: Future<List<_i9.NewsModel>>.value(<_i9.NewsModel>[]))
-          as _i5.Future<List<_i9.NewsModel>>);
+  _i5.Future<List<_i9.QuoteModel>> getQuote() => (super.noSuchMethod(
+          Invocation.method(#getQuote, []),
+          returnValue: Future<List<_i9.QuoteModel>>.value(<_i9.QuoteModel>[]))
+      as _i5.Future<List<_i9.QuoteModel>>);
 }
 
 /// A class which mocks [Client].
