@@ -72,15 +72,6 @@ class SettingsScreen extends StatelessWidget {
               color: blackColor.withOpacity(0.1),
               height: 1.0,
             ),
-            CustomTextButton(
-                isSwiched: false,
-                title: LocaleKeys.notification.tr(),
-                subTitle: LocaleKeys.notifications_args.tr(),
-                onTap: () {}),
-            Container(
-              color: Colors.grey.withOpacity(0.1),
-              height: 1.0,
-            ),
           ],
         ),
       ),

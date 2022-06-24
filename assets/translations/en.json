@@ -15,5 +15,6 @@
   "note_todo": "Add what you supposed to do",
   "note": "Note",
   "note_msg": "Subject is empty",
-  "note_msg_content":"You have to fill in the subject name"
+  "note_msg_content":"You have to fill in the subject name",
+  "locale":"us"
 }

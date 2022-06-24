@@ -1,48 +1,39 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:orodomop_app/data/models/news_model.dart';
-import 'package:orodomop_app/data/models/news_response.dart';
-import 'package:orodomop_app/data/models/source_model.dart';
-import 'package:orodomop_app/domain/entities/news.dart';
-import 'package:orodomop_app/domain/entities/source.dart';
+import 'package:orodomop_app/data/models/notes.dart';
+import 'package:orodomop_app/data/models/quote_model.dart';
+import 'package:orodomop_app/data/models/quote_response.dart';
+import 'package:orodomop_app/domain/entities/quote.dart';
 
 import '../json_reader.dart';
 
-const testNews = News(
-  author: "author",
-  title: "title",
-  content: "content",
-  description: "description",
-  publishedAt: "publishedAt",
-  source: Source(id: "2", name: 'name'),
-  url: "url",
-  urlToImage: "urlToImage",
+final testQuote = Quote(
+    quote:
+        "You don't need anybody to tell you who you are or what you are. You are what you are!",
+    author: 'John Lennon');
+
+final testQuoteModel = QuoteModel(
+  quote:
+      "You don't need anybody to tell you who you are or what you are. You are what you are!",
+  author: "John Lennon",
 );
 
-final testNewsModel = NewsModel(
-  author: 'author',
+final testNotes = NotesTable(
+  id: 1,
   title: 'title',
-  content: 'content',
-  description: 'description',
-  publishedAt: 'publishedAt',
-  source: SourceModel(id: "2", name: 'name'),
-  url: 'url',
-  urlToImage: 'urlToImage',
+  contents: 'contents',
 );
 
-final testSourceModel = SourceModel(id: '2', name: 'name');
+final testQuoteResponseModel =
+    QuoteResponse(quoteList: <QuoteModel>[testQuoteModel]);
 
-final testNewsResponseModel =
-    NewsResponse(newsList: <NewsModel>[testNewsModel]);
+final testListQuoteModel = <QuoteModel>[testQuoteModel];
 
-final testListNewsModel = <NewsModel>[testNewsModel];
+final testListNews = <Quote>[testQuote];
 
-final testListNews = <News>[testNews];
-
-final testNewsList =
-    NewsResponse.fromJson(json.decode(readJson('dummy_data/news_list.json')))
-        .newsList;
+final testQuoteList =
+    QuoteResponse.fromJson(json.decode(readJson('dummy_data/quote_list.json')))
+        .quoteList;
 
 const testId = 1;
 

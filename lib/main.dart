@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:orodomop_app/common/dark_theme.dart';
 import 'package:orodomop_app/common/utils.dart';
-import 'package:orodomop_app/presentation/provider/news_list_notifier.dart';
+import 'package:orodomop_app/presentation/provider/quote_list_notifier.dart';
 import 'package:orodomop_app/presentation/pages/main_view.dart';
 import 'package:orodomop_app/presentation/pages/onboarding_screen.dart';
 import 'package:orodomop_app/presentation/provider/dark_theme_provider.dart';
@@ -18,6 +19,7 @@ bool? showHome;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await EasyLocalization.ensureInitialized();
   SharedPreferences pref = await SharedPreferences.getInstance();
   showHome = pref.getBool('showHome') ?? false;
@@ -41,7 +43,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  DarkThemeProvider themeChangeProvider = new DarkThemeProvider();
+  DarkThemeProvider themeChangeProvider = di.locator<DarkThemeProvider>();
 
   @override
   void initState() {
@@ -58,10 +60,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => NavigationProvider()),
-        ChangeNotifierProvider(create: (_) => NotesDatabaseProvider()),
-        ChangeNotifierProvider(create: (_) => TimerProvider()),
-        ChangeNotifierProvider(create: (_) => di.locator<NewsListNotifier>()),
+        ChangeNotifierProvider(create: (_) => di.locator<NavigationProvider>()),
+        ChangeNotifierProvider(
+            create: (_) => di.locator<NotesDatabaseProvider>()),
+        ChangeNotifierProvider(create: (_) => di.locator<TimerProvider>()),
+        ChangeNotifierProvider(create: (_) => di.locator<QuoteListNotifier>()),
         ChangeNotifierProvider(create: (_) => themeChangeProvider),
       ],
       child: Consumer<DarkThemeProvider>(
@@ -74,7 +77,7 @@ class _MyAppState extends State<MyApp> {
           theme: Styles.themeData(themeChangeProvider.darkTheme, context),
           navigatorObservers: [routeObserver],
           onGenerateRoute: NavigationProvider.of(context).onGenerateRoute,
-          home: showHome == true ? MainView() : OnBoardingScreen(),
+          home: showHome == true ? const MainView() : const OnBoardingScreen(),
         );
       }),
     );

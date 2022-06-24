@@ -15,5 +15,6 @@
   "note_todo": "Tambahkan apa yang harus anda lakukan",
   "note": "Catatan",
   "note_msg": "Subject kosong",
-  "note_msg_content":"Anda harus mengisi nama subjek"
+  "note_msg_content":"Anda harus mengisi nama subjek",
+  "locale":"id"
 }

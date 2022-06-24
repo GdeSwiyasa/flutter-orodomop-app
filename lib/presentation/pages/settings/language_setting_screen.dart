@@ -5,7 +5,7 @@ import 'package:orodomop_app/common/locale/locale_keys.g.dart';
 import 'package:orodomop_app/presentation/widgets/custom_app_bar.dart';
 import 'package:orodomop_app/presentation/widgets/custom_text_button.dart';
 import 'package:orodomop_app/presentation/widgets/settings_card_item.dart';
-import 'package:provider/provider.dart';
+
 
 class LanguageSettingScreen extends StatefulWidget {
   static const route = '/language';
