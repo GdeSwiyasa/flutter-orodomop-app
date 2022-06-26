@@ -1,33 +1,48 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'timer_provider_test.mocks.dart';
-
 @GenerateMocks([SharedPreferences])
 void main() {
-  late MockSharedPreferences mockSharedPreferences;
   late TimerProvider timerProvider;
 
   setUp(() {
-    mockSharedPreferences = MockSharedPreferences();
     timerProvider = TimerProvider();
   });
 
-  group('Save Data Test', () async {
-    test('Save Data Test', () async {
-      when(timerProvider.breakDuration).thenReturn(1);
-      when(timerProvider.focusDuration).thenReturn(1);
-      when(timerProvider.numCycle).thenReturn(1);
+  group(
+    'Save data test',
+    () {
+      test(
+        'breakDuration should contain 1 after saving',
+        () async {
+          await timerProvider.saveData(
+              breakDuration: 1, focusDuration: 0, numCycle: 0);
 
-      await timerProvider.saveData(
-          breakDuration: 1, focusDuration: 1, numCycle: 1);
+          expect(timerProvider.prefs.getInt('breakDuration'), 1);
+        },
+      );
 
-      expect(timerProvider.prefs.getInt('breakDuration'), 1);
-      expect(timerProvider.prefs.getInt('focusDuration'), 1);
-      expect(timerProvider.prefs.getInt('numCycle'), 1);
-    });
-  });
+      test(
+        'focusDuration should contain 1 after saving',
+        () async {
+          await timerProvider.saveData(
+              breakDuration: 0, focusDuration: 1, numCycle: 0);
+
+          expect(timerProvider.prefs.getInt('focusDuration'), 1);
+        },
+      );
+
+      test(
+        'numCycle should contain 1 after saving',
+        () async {
+          await timerProvider.saveData(
+              breakDuration: 0, focusDuration: 0, numCycle: 1);
+
+          expect(timerProvider.prefs.getInt('numCycle'), 1);
+        },
+      );
+    },
+  );
 }
