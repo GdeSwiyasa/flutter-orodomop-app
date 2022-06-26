@@ -1,15 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-@GenerateMocks([SharedPreferences])
 void main() {
   late TimerProvider timerProvider;
 
-  setUp(() {
-    timerProvider = TimerProvider();
-  });
+  setUp(
+    () {
+      timerProvider = TimerProvider();
+    },
+  );
 
   group(
     'Save data test',
