@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   late TimerProvider timerProvider;
@@ -19,7 +20,9 @@ void main() {
           await timerProvider.saveData(
               breakDuration: 1, focusDuration: 0, numCycle: 0);
 
-          expect(timerProvider.prefs.getInt('breakDuration'), 1);
+          final prefs = await SharedPreferences.getInstance();
+
+          expect(prefs.getInt('breakDuration'), 1);
         },
       );
 
@@ -29,7 +32,9 @@ void main() {
           await timerProvider.saveData(
               breakDuration: 0, focusDuration: 1, numCycle: 0);
 
-          expect(timerProvider.prefs.getInt('focusDuration'), 1);
+          final prefs = await SharedPreferences.getInstance();
+
+          expect(prefs.getInt('focusDuration'), 1);
         },
       );
 
@@ -39,7 +44,9 @@ void main() {
           await timerProvider.saveData(
               breakDuration: 0, focusDuration: 0, numCycle: 1);
 
-          expect(timerProvider.prefs.getInt('numCycle'), 1);
+          final prefs = await SharedPreferences.getInstance();
+
+          expect(prefs.getInt('numCycle'), 1);
         },
       );
     },
