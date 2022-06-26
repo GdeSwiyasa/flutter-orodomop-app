@@ -631,7 +631,7 @@ packages:
     source: hosted
     version: "2.1.1"
   shared_preferences_macos:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shared_preferences_macos
       url: "https://pub.dartlang.org"
