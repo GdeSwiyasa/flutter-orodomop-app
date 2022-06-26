@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:orodomop_app/presentation/provider/timer_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -18,36 +17,36 @@ void main() {
       test(
         'breakDuration should contain 1 after saving',
         () async {
-          await timerProvider.saveData(
+          timerProvider.saveData(
               breakDuration: 1, focusDuration: 0, numCycle: 0);
 
-          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await timerProvider.loadTimer();
 
-          expect(prefs.getInt('breakDuration'), 1);
+          expect(timerProvider.breakDuration, 1);
         },
       );
 
       test(
         'focusDuration should contain 1 after saving',
         () async {
-          await timerProvider.saveData(
+          timerProvider.saveData(
               breakDuration: 0, focusDuration: 1, numCycle: 0);
 
-          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await timerProvider.loadTimer();
 
-          expect(prefs.getInt('focusDuration'), 1);
+          expect(timerProvider.focusDuration, 1);
         },
       );
 
       test(
         'numCycle should contain 1 after saving',
         () async {
-          await timerProvider.saveData(
+          timerProvider.saveData(
               breakDuration: 0, focusDuration: 0, numCycle: 1);
 
-          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await timerProvider.loadTimer();
 
-          expect(prefs.getInt('numCycle'), 1);
+          expect(timerProvider.numCycle, 1);
         },
       );
     },
