@@ -46,7 +46,6 @@ dependencies:
   firebase_core: ^1.17.0
   firebase_crashlytics: ^2.8.1
   audioplayers: ^1.0.0
-  shared_preferences_macos: ^2.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
